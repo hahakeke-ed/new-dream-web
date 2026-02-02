@@ -8,12 +8,10 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        // layout.tsx에서 정의할 폰트 변수들과 연결합니다.
-        sans: ["var(--font-geist-sans)"],
-        mono: ["var(--font-geist-mono)"],
+        // layout.tsx에서 정의한 변수(--font-inter)와 연결
+        sans: ["var(--font-inter)"], 
         pacifico: ["var(--font-pacifico)"], 
       },
-      // 고급스러운 등장을 위한 애니메이션 정의
       animation: {
         "fade-in": "fadeIn 1.5s ease-out forwards",
         "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
