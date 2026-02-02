@@ -1,15 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useRef } from 'react';
 import SmsButton from '../components/SmsButton';
-import { SHOW_MIND_SERVICE } from './lib/siteFlags';
 import { posts } from './lib/posts';
 
 export default function Home() {
-  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
-  const navRef = useRef<HTMLDivElement>(null);
-
+  // 새 게시물 확인 로직 (최근 7일 이내)
   const hasNewPost = posts.some(post => {
     const postDate = new Date(post.date);
     const today = new Date();
@@ -21,23 +17,25 @@ export default function Home() {
   const menuItems = [
     { id: 'home', name: '홈', href: '/' },
     { id: 'counseling', name: '심리상담', href: '/counseling' },
-    { id: 'supervisor', name: '수퍼비전/교육', href: '/supervisor' }, // 수련감독자 권위 강조 메뉴
+    { id: 'supervisor', name: '수퍼비전/교육', href: '/supervisor' },
     { id: 'national-support', name: '바우처 안내', href: '/national-support' },
     { id: 'location', name: '오시는 길', href: '#location' }
   ];
 
   return (
     <div className="min-h-screen bg-[#0a0f1a] text-slate-200 font-sans">
-      {/* 1. Header: 더 정갈하고 고급스러운 디자인 */}
+      {/* 1. Header */}
       <header className="fixed top-0 w-full z-50 bg-[#0a0f1a]/80 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-3">
+          {/* 로고 영역 */}
+          <Link href="/" className="flex items-center space-x-3 cursor-pointer">
             <div className="flex flex-col">
               <h1 className="text-xl font-['Pacifico'] text-amber-500 tracking-wider">Mind Study</h1>
               <p className="text-[10px] uppercase tracking-[0.2em] text-slate-500">Master's Private Studio</p>
             </div>
-          </div>
+          </Link>
           
+          {/* 데스크톱 네비게이션 */}
           <nav className="hidden md:flex items-center space-x-10 text-sm font-medium tracking-tight">
             {menuItems.map((item) => (
               <Link key={item.id} href={item.href} className="hover:text-amber-500 transition-colors">
@@ -49,15 +47,24 @@ export default function Home() {
               {hasNewPost && <span className="absolute -top-1 -right-2 w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>}
             </Link>
           </nav>
+
+          {/* 모바일용 심플 메뉴 (모바일에서는 소식/칼럼 버튼만 노출하여 공간 절약) */}
+          <div className="md:hidden">
+            <Link href="/board" className="text-xs font-bold text-amber-500 border border-amber-500/30 px-3 py-1 rounded-full">
+               NEWS {hasNewPost && 'N'}
+            </Link>
+          </div>
         </div>
       </header>
 
-      {/* 2. Hero Section: 기존 배경 유지하되 카피 강화 */}
+      {/* 2. Hero Section */}
       <section 
         className="relative h-[90vh] flex items-center justify-center overflow-hidden"
         style={{
+          // 원장님이 마음에 들어하신 배경 이미지 유지
           backgroundImage: `linear-gradient(rgba(10, 15, 26, 0.6), rgba(10, 15, 26, 0.9)), url('https://readdy.ai/api/search-image?query=Professional%20psychology%20counseling%20center%20interior%20with%20comfortable%20seating%20area%2C%20warm%20lighting%20with%20soft%20neutral%20tones%2C%20therapy%20office%20with%20calming%20ambiance%20for%20mental%20health%20services%2C%20modern%20design%20with%20comfortable%20chairs%20and%20plants%2C%20peaceful%20atmosphere%20with%20warm%20natural%20lighting&width=1200&height=600&seq=main-hero-v26&orientation=landscape')`,
-          backgroundSize: 'cover', backgroundPosition: 'center'
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center'
         }}
       >
         <div className="max-w-4xl px-6 text-center z-10">
@@ -71,7 +78,7 @@ export default function Home() {
             격조 높은 프라이빗 공간에서 당신의 내면을 객관화하십시오.
           </p>
           
-          {/* 듀얼 트랙 선택 버튼 (UX 분리) */}
+          {/* 듀얼 트랙 선택 버튼 */}
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <Link href="/individual" className="px-10 py-4 bg-amber-600 hover:bg-amber-500 text-white rounded-full font-bold transition-all shadow-xl shadow-amber-900/20">
               프리미엄 개인 상담
@@ -83,7 +90,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3. Authority Section: 수련감독자 권위 강조 */}
+      {/* 3. Authority Section */}
       <section className="py-24 bg-white text-[#0a0f1a]">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
           <div>
@@ -106,7 +113,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Service Section: 카드형 디자인으로 가독성 향상 */}
+      {/* 4. Service Section */}
       <section className="py-24 bg-[#0d1421]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
