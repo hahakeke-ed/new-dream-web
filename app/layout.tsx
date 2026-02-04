@@ -1,8 +1,9 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Pacifico } from "next/font/google";
+import { Inter, Pacifico } from "next/font/google"; // Geist 대신 Inter를 사용합니다.
 import "./globals.css";
 
+// 필기체 폰트 (기존 유지)
 const pacifico = Pacifico({
   weight: "400",
   subsets: ["latin"],
@@ -10,19 +11,15 @@ const pacifico = Pacifico({
   variable: "--font-pacifico",
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+// Geist Sans/Mono 대신 사용할 표준 Sans-serif 폰트
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Mind Study - 심리 상담 & 마음 성장 공간",
-  description: "심리 분석, 치유, 자기성 자료를 제공하는 온라인 플랫폼",
+  description: "심리 분석, 치유, 자기성 성장 자료를 제공하는 온라인 플랫폼",
   alternates: {
     canonical: "https://mind-study.co.kr",
   },
@@ -52,10 +49,10 @@ export default function RootLayout({
           content="451c2d7a8f96e15aec129b80d89b645ebe51b525"
         />
       </head>
+      {/* 폰트 변수를 inter와 pacifico로 교체했습니다. */}
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} antialiased`}
+        className={`${inter.variable} ${pacifico.variable} antialiased font-sans`}
       >
-        {/* 기존의 중복 헤더를 제거했습니다. 본문 내용만 출력됩니다. */}
         {children}
       </body>
     </html>
