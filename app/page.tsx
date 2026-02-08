@@ -58,7 +58,7 @@ export default function Home() {
               <img 
                 src="/new_logo.png" 
                 alt="드림심리상담센터" 
-                className="h-17 w-auto object-contain"
+                className="h-13 w-auto object-contain"
               />
             </Link>
             
