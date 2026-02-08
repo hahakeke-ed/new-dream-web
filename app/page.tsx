@@ -34,7 +34,7 @@ export default function Home() {
     },
     {
       id: 'super-vision',
-      name: 'Super Vision 전문가교육',
+      name: 'Super Vision',
       href: '#super-vision', // 현재 페이지의 특정 섹션으로 스크롤 이동
       description: '상담 전문가를 위한 체계적인 교육 및 수퍼비전 프로그램입니다.'
     }
@@ -83,7 +83,7 @@ export default function Home() {
                   href="/board" 
                   className="text-slate-200 hover:text-amber-400 transition-colors cursor-pointer whitespace-nowrap text-lg font-medium tracking-wide flex items-center"
                 >
-                  소식 및 칼럼  {/* <-- 여기 글자만 수정하시면 됩니다 */}
+                  Master’s Journal  {/* <-- 여기 글자만 수정하시면 됩니다 */}
                   {hasNewPost && (
                     <span className="absolute -top-3 -right-2 flex h-4 w-4">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
