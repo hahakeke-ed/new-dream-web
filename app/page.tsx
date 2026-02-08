@@ -65,25 +65,29 @@ export default function Home() {
               />
             </Link>
             
+{/* 115번째 줄 부근: <nav> 태그 시작부터 끝까지 교체 */}
             <nav className="hidden md:flex items-center space-x-10 relative" ref={navRef}>
               {menuItems.map((item) => (
                 <div key={item.id} className="relative">
-                  <button
-                    onClick={() => handleMenuClick(item.id, item.href)}
-                    className="text-slate-200 hover:text-amber-400 transition-colors cursor-pointer whitespace-nowrap text-lg font-medium tracking-wide"
+                  {/* 기존 button 태그를 Link 태그로 변경하여 클릭 시 바로 이동하게 수정 */}
+                  <Link
+                    href={item.href}
+                    onMouseEnter={() => setActiveTooltip(item.id)} // 마우스 올리면 설명 보임
+                    onMouseLeave={() => setActiveTooltip(null)}    // 마우스 떼면 설명 사라짐
+                    className="text-slate-200 hover:text-amber-400 transition-colors cursor-pointer whitespace-nowrap text-lg font-medium tracking-wide py-2 block"
                   >
                     {item.name}
-                  </button>
+                  </Link>
                 </div>
               ))}
 
-             {/* 센터소식 및 칼럼 버튼 (이름 변경 완료) */}
+              {/* 센터소식 및 칼럼 버튼 */}
               <div className="relative">
                 <Link 
                   href="/board" 
                   className="text-slate-200 hover:text-amber-400 transition-colors cursor-pointer whitespace-nowrap text-lg font-medium tracking-wide flex items-center"
                 >
-                  Master’s Journal  {/* <-- 여기 글자만 수정하시면 됩니다 */}
+                  센터소식 및 칼럼
                   {hasNewPost && (
                     <span className="absolute -top-3 -right-2 flex h-4 w-4">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
@@ -94,6 +98,18 @@ export default function Home() {
                   )}
                 </Link>
               </div>
+
+              {/* 툴팁 (설명창) - 마우스를 올렸을 때만 나타납니다 */}
+              {activeTooltip && (
+                <div className="absolute top-full left-0 right-0 mt-2 z-50">
+                  <div className="bg-slate-800 text-white p-6 rounded-xl shadow-2xl border border-slate-600 w-80">
+                    <p className="text-sm leading-relaxed text-slate-300">
+                      {menuItems.find(item => item.id === activeTooltip)?.description}
+                    </p>
+                  </div>
+                </div>
+              )}
+            </nav>
 
               {activeTooltip && (
                 <div className="absolute top-full left-0 right-0 mt-4 z-50">
