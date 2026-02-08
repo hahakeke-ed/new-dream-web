@@ -127,10 +127,10 @@ export default function Home() {
         }}
       >
         <div className="relative max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl font-bold mb-6">마음을 치유하는 전문기관</h1>
+          <h1 className="text-5xl font-bold mb-6">리더를 위한 프라이빗 인사이트</h1>
           <p className="text-xl mb-8 text-slate-200">
-            전문적이고 따뜻한 심리상담으로<br />
-            당신의 마음을 보살펴 드립니다
+            복잡한 현상 아래 작동하는 당신의 심리적 기제<br />
+            본질을 관통하는 통찰
           </p>
         </div>
       </section>
