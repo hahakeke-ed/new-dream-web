@@ -108,10 +108,13 @@ export default function HeritagePage() {
         
         <div className="relative z-10 text-center px-6">
           <p className="text-[#D4AF37] tracking-[0.3em] uppercase text-sm mb-6 animate-fade-in">15 Years of Silence, 15 Years of Trust</p>
-          <h1 className="text-4xl md:text-7xl font-serif text-white mb-8 leading-tight">
+          
+          {/* 줄 간격을 넓게 수정했습니다 (leading-tight -> leading-loose) */}
+          <h1 className="text-4xl md:text-7xl font-serif text-white mb-8 leading-loose">
             설명할 필요가 없는 가치,<br/>
             경험에서 이어지는 무언의 추천
           </h1>
+          
           <div className="w-16 h-[1px] bg-[#D4AF37] mx-auto mb-8"></div>
           <p className="text-white/70 max-w-2xl mx-auto leading-relaxed font-light text-lg">
             2011년부터 이어져 온 침묵의 약속. <br/>
