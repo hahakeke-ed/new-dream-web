@@ -4,13 +4,12 @@ import Link from 'next/link';
 import { useState, useRef } from 'react';
 import SmsButton from '../components/SmsButton';
 import { SHOW_MIND_SERVICE } from './lib/siteFlags';
-import { posts } from './lib/posts'; // NEW 배지 로직용
+import { posts } from './lib/posts';
 
 export default function Home() {
   const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const navRef = useRef<HTMLDivElement>(null);
 
-  // 새 게시물 확인 로직 (오늘부터 7일 이내)
   const hasNewPost = posts.some(post => {
     const postDate = new Date(post.date);
     const today = new Date();
@@ -19,7 +18,6 @@ export default function Home() {
     return diffDays >= 0 && diffDays <= 7;
   });
 
-  // 1. 메뉴 구성 변경 (홈 버튼 삭제, 요청하신 3개 메뉴 중 2개는 배열로, 1개는 별도 버튼으로)
   const menuItems = [
     {
       id: 'premium-analysis',
@@ -44,25 +42,22 @@ export default function Home() {
   };
 
   return (
-    // 전체 폰트를 Noto Sans(새로운 폰트)로 적용 (app/layout.tsx 설정 필요)
+    // 주석 제거 및 폰트 적용
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 font-[family-name:var(--font-noto-sans)]">
       
-      {/* ================= HEADER (새로운 디자인 적용됨) ================= */}
       <header className="bg-slate-900 shadow-lg border-b border-slate-700 relative">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             
-            {/* 로고 영역 (클릭 시 홈으로 이동) */}
             <Link href="/" className="flex items-center">
-              {/* public 폴더에 new_logo.png가 없으면 엑박이 뜰 수 있으니 파일을 꼭 넣어주세요 */}
               <img 
                 src="/new_logo.png" 
                 alt="드림심리상담센터" 
-                className="h-13 w-auto object-contain"
+                // h-13을 h-14(약 56px)로 변경했습니다. 더 키우려면 h-16, h-20 등을 사용하세요.
+                className="h-14 w-auto object-contain"
               />
             </Link>
             
-            {/* 네비게이션 영역 */}
             <nav className="hidden md:flex items-center space-x-10 relative" ref={navRef}>
               {menuItems.map((item) => (
                 <div key={item.id} className="relative">
@@ -75,7 +70,6 @@ export default function Home() {
                 </div>
               ))}
 
-              {/* 센터소식 및 칼럼 버튼 (NEW 배지 포함) */}
               <div className="relative">
                 <Link 
                   href="/board" 
@@ -93,7 +87,6 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* 툴팁 (설명창) */}
               {activeTooltip && (
                 <div className="absolute top-full left-0 right-0 mt-4 z-50">
                   <div className="bg-slate-800 text-white p-6 rounded-xl shadow-2xl border border-slate-600 w-80">
@@ -107,7 +100,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 툴팁 닫기용 배경 */}
         {activeTooltip && (
           <div 
             className="fixed inset-0 z-40" 
@@ -115,8 +107,6 @@ export default function Home() {
           ></div>
         )}
       </header>
-
-      {/* ================= BODY (기존 내용 완벽 복구됨) ================= */}
 
       {/* Hero Section */}
       <section 
@@ -659,7 +649,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
+     {/* Footer */}
       <footer className="bg-gray-900 text-white py-12 px-4 border-t border-slate-800">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-4 mb-6">
