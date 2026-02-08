@@ -18,18 +18,25 @@ export default function Home() {
     return diffDays >= 0 && diffDays <= 7;
   });
 
+  // 1. 메뉴 구성 변경 (Heritage, Private Insight, Super Vision)
   const menuItems = [
     {
-      id: 'premium-analysis',
-      name: '프리미엄 개인 심리 분석',
-      href: '/premium-analysis',
-      description: '프라이빗 시간과 공간에서, 개인 심리 분석을 통한 성찰과 통찰을 이끄는 프리미엄 서비스'
+      id: 'heritage',
+      name: 'Heritage',
+      href: '/heritage', // 새로운 페이지로 이동 (추후 생성 필요)
+      description: '드림심리상담센터의 역사와 철학을 담은 공간입니다.'
     },
     {
-      id: 'expert-education',
-      name: '전문가 교육',
-      href: '/expert-education',
-      description: '상담 심리 전문가 수련을 위한 교육분석 및 수퍼비전 프로그램'
+      id: 'private-insight',
+      name: 'Private Insight',
+      href: '#private-insight', // 현재 페이지의 특정 섹션으로 스크롤 이동
+      description: '나를 깊이 있게 들여다보는 프리미엄 심리 분석 서비스입니다.'
+    },
+    {
+      id: 'super-vision',
+      name: 'Super Vision 전문가교육',
+      href: '#super-vision', // 현재 페이지의 특정 섹션으로 스크롤 이동
+      description: '상담 전문가를 위한 체계적인 교육 및 수퍼비전 프로그램입니다.'
     }
   ];
 
