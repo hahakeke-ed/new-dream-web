@@ -139,14 +139,15 @@ export default function HeritagePage() {
             </div>
             <div className="w-full md:w-2/3 text-lg leading-relaxed font-light text-[#505e6b] space-y-8">
               <p>
-                오직 경험에서 경험으로. 2011년, 개업 상담기관이라는 낯선 길을 묵묵히 걸어온 지 어느덧 15년이 되었습니다. 우리는 대중을 향한 광고 대신 사유와 성찰의 깊이에 투자했습니다.
+                오직 경험에서 경험으로.<br/> 
+                2011년, 개업 상담기관이라는 낯선 길을 묵묵히 걸어온 지 어느덧 15년이 되었습니다. 우리는 대중을 향한 광고 대신 사유와 성찰의 깊이에 투자했습니다.
               </p>
               <p>
                 화려한 홍보 없이 오직 내담자의 삶이 변하는 과정만으로 실력을 증명해 온 시간입니다. 사회적 리더들이 자신의 소중한 지인에게만 조심스럽게 건네는 이름, 그것이 바로 드림이 지켜온 헤리티지입니다.
               </p>
               <div className="pt-6 border-t border-gray-200">
                 <p className="italic text-[#D4AF37] font-serif">
-                  "우리는 광고하지 않습니다. 오직 결과로 말합니다."
+                  "우리는 광고하지 않습니다. 변화가 이어질뿐입니다."
                 </p>
               </div>
             </div>
