@@ -23,7 +23,8 @@ export default function HeritagePage() {
         </h1>
         <p className="text-xl md:text-2xl text-slate-300 font-light max-w-2xl leading-relaxed">
           2011년부터 이어온 치유와 성장의 기록<br/>
-          사람을 향한 진심, 그 깊이 있는 여정
+          당시 다소 생소했던 개업 상담자의 길이었지만<br/>
+          사람을 향한 진심, 그 깊이 있는 여정이 이어집니다<br/>
         </p>
       </section>
 
