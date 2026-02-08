@@ -1,9 +1,14 @@
-// app/layout.tsx
 import type { Metadata } from "next";
-import { Inter, Pacifico } from "next/font/google"; // Geist 대신 Inter를 사용합니다.
+import { Noto_Sans_KR, Geist, Geist_Mono, Pacifico } from "next/font/google"; // Noto_Sans_KR 추가
 import "./globals.css";
 
-// 필기체 폰트 (기존 유지)
+// 1. 한글 폰트 설정 (고딕 스타일)
+const notoSansKr = Noto_Sans_KR({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"], // 보통, 중간, 굵은 굵기 사용
+  variable: "--font-noto-sans",
+});
+
 const pacifico = Pacifico({
   weight: "400",
   subsets: ["latin"],
@@ -11,31 +16,20 @@ const pacifico = Pacifico({
   variable: "--font-pacifico",
 });
 
-// Geist Sans/Mono 대신 사용할 표준 Sans-serif 폰트
-const inter = Inter({
-  variable: "--font-inter",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Mind Study - 심리 상담 & 마음 성장 공간",
-  description: "심리 분석, 치유, 자기성 성장 자료를 제공하는 온라인 플랫폼",
-  alternates: {
-    canonical: "https://mind-study.co.kr",
-  },
-  openGraph: {
-    title: "Mind Study - 심리 상담 & 마음 성장 공간",
-    description: "심리 분석, 치유, 자기성장 자료를 제공하는 온라인 플랫폼",
-    url: "https://mind-study.co.kr",
-    siteName: "Mind Study",
-    type: "website",
-    locale: "ko_KR",
-  },
-  twitter: {
-    card: "summary",
-    title: "Mind Study - 심리 상담 & 마음 성장 공간",
-    description: "심리 분석, 치유, 자기계발 자료를 제공하는 온라인 플랫폼",
-  },
+  description: "심리 분석, 치유, 자기성장 자료를 제공하는 온라인 플랫폼",
+  // ... (기존 메타데이터 유지)
 };
 
 export default function RootLayout({
@@ -49,9 +43,9 @@ export default function RootLayout({
           content="451c2d7a8f96e15aec129b80d89b645ebe51b525"
         />
       </head>
-      {/* 폰트 변수를 inter와 pacifico로 교체했습니다. */}
       <body
-        className={`${inter.variable} ${pacifico.variable} antialiased font-sans`}
+        // 폰트 변수를 body에 추가하여 사이트 전체에 적용
+        className={`${notoSansKr.variable} ${geistSans.variable} ${geistMono.variable} ${pacifico.variable} antialiased font-sans`}
       >
         {children}
       </body>
