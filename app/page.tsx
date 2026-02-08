@@ -23,13 +23,13 @@ export default function Home() {
       id: 'premium-analysis',
       name: '프리미엄 개인 심리 분석',
       href: '/premium-analysis',
-      description: '심층적인 개인 심리 분석을 통해 나를 더 깊이 이해하는 프리미엄 서비스입니다.'
+      description: '프라이빗 시간과 공간에서, 개인 심리 분석을 통한 성찰과 통찰을 이끄는 프리미엄 서비스'
     },
     {
       id: 'expert-education',
       name: '전문가 교육',
       href: '/expert-education',
-      description: '상담 심리 전문가를 위한 체계적인 교육 및 수퍼비전 프로그램입니다.'
+      description: '상담 심리 전문가 수련을 위한 교육분석 및 수퍼비전 프로그램'
     }
   ];
 
@@ -54,7 +54,7 @@ export default function Home() {
                 src="/new_logo.png" 
                 alt="드림심리상담센터" 
                 // h-13을 h-14(약 56px)로 변경했습니다. 더 키우려면 h-16, h-20 등을 사용하세요.
-                className="h-14 w-auto object-contain"
+                className="h-16 w-auto object-contain"
               />
             </Link>
             
