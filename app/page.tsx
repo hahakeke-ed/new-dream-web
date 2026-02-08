@@ -58,7 +58,8 @@ export default function Home() {
               <img 
                 src="/new_logo.png" 
                 alt="드림심리상담센터" 
-                className="h-12 w-auto object-contain" 
+                {/* h-12를 h-20으로 변경하여 크기를 키웁니다 */}
+                className="h-20 w-auto object-contain transition-transform hover:scale-105"
               />
             </Link>
             
