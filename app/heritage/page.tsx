@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronRight, Award, Shield, MapPin, Calendar, Menu, X, BookOpen, UserCheck } from 'lucide-react';
+'use client';
 
-const App = () => {
+import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
+
+export default function HeritagePage() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -47,6 +49,35 @@ const App = () => {
     }
   ];
 
+  // 아이콘 컴포넌트들 (설치 없이 작동하도록 직접 구현)
+  const IconChevronRight = ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m9 18 6-6-6-6"/></svg>
+  );
+  const IconMenu = ({ size }: { size?: number }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+  );
+  const IconX = ({ size }: { size?: number }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  );
+  const IconShield = ({ size }: { size?: number }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+  );
+  const IconAward = ({ size }: { size?: number }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+  );
+  const IconBookOpen = ({ size }: { size?: number }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+  );
+  const IconMapPin = ({ className, size }: { className?: string, size?: number }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+  );
+  const IconCalendar = ({ className, size }: { className?: string, size?: number }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+  );
+  const IconUserCheck = ({ className, size }: { className?: string, size?: number }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={size || 24} height={size || 24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+  );
+
   return (
     <div className="min-h-screen bg-[#F9F8F6] text-[#2C3E50] font-sans selection:bg-[#D4AF37] selection:text-white">
       {/* Navigation */}
@@ -55,6 +86,7 @@ const App = () => {
           <div className="text-2xl font-serif tracking-widest text-[#1A252F]">HERITAGE</div>
           
           <div className="hidden md:flex space-x-12 text-sm font-medium tracking-tighter uppercase">
+            <Link href="/" className="hover:text-[#D4AF37] transition-colors">Home</Link>
             <a href="#about" className="hover:text-[#D4AF37] transition-colors">About</a>
             <a href="#responsibility" className="hover:text-[#D4AF37] transition-colors">Responsibility</a>
             <a href="#milestones" className="hover:text-[#D4AF37] transition-colors">Milestones</a>
@@ -62,7 +94,7 @@ const App = () => {
           </div>
 
           <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <IconX size={24} /> : <IconMenu size={24} />}
           </button>
         </div>
       </nav>
@@ -88,7 +120,7 @@ const App = () => {
         </div>
         
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/30 animate-bounce">
-          <ChevronRight className="rotate-90" />
+          <IconChevronRight className="rotate-90" />
         </div>
       </header>
 
@@ -131,7 +163,7 @@ const App = () => {
           </div>
           <div>
             <div className="flex items-center space-x-3 text-[#D4AF37] mb-4">
-              <Shield size={20} />
+              <IconShield size={20} />
               <span className="uppercase tracking-widest text-xs font-bold">Responsibility</span>
             </div>
             <h2 className="text-4xl font-serif mb-8 text-[#1A252F]">책임의 Heritage</h2>
@@ -141,7 +173,7 @@ const App = () => {
             <div className="grid grid-cols-1 gap-6">
               <div className="flex items-start space-x-4">
                 <div className="p-3 bg-[#F9F8F6] rounded-full text-[#1A252F]">
-                  <Award size={20} />
+                  <IconAward size={20} />
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#1A252F]">Gatekeeper의 사명</h4>
@@ -150,7 +182,7 @@ const App = () => {
               </div>
               <div className="flex items-start space-x-4">
                 <div className="p-3 bg-[#F9F8F6] rounded-full text-[#1A252F]">
-                  <BookOpen size={20} />
+                  <IconBookOpen size={20} />
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#1A252F]">성찰의 가치 확산</h4>
@@ -227,15 +259,15 @@ const App = () => {
               <h2 className="text-3xl font-serif text-[#1A252F] mb-8">성찰의 시작은<br/>조용한 공간에서부터.</h2>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
-                  <MapPin className="text-[#D4AF37]" size={20} />
+                  <IconMapPin className="text-[#D4AF37]" size={20} />
                   <span className="text-gray-600 font-light">대구광역시 수성구 범어동 (Private Studio)</span>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <Calendar className="text-[#D4AF37]" size={20} />
+                  <IconCalendar className="text-[#D4AF37]" size={20} />
                   <span className="text-gray-600 font-light">100% 사전 예약제 운영</span>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <UserCheck className="text-[#D4AF37]" size={20} />
+                  <IconUserCheck className="text-[#D4AF37]" size={20} />
                   <span className="text-gray-600 font-light">기존 내담자의 추천을 우선합니다.</span>
                 </div>
               </div>
@@ -246,7 +278,7 @@ const App = () => {
                 드림 헤리티지의 성찰 세션은 깊이 있는 임상을 위해 한정된 인원으로만 운영됩니다. <br/>
                 상담 문의는 아래 연락처로 성함과 함께 남겨주시면 확인 후 연락드리겠습니다.
               </p>
-              <a href="tel:010-0000-0000" className="block w-full py-4 bg-[#1A252F] text-white text-center rounded-xl font-medium hover:bg-[#2C3E50] transition-colors tracking-widest">
+              <a href="tel:053-759-1282" className="block w-full py-4 bg-[#1A252F] text-white text-center rounded-xl font-medium hover:bg-[#2C3E50] transition-colors tracking-widest">
                 CONTACT INQUIRY
               </a>
             </div>
@@ -264,5 +296,3 @@ const App = () => {
     </div>
   );
 };
-
-export default App;
