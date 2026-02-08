@@ -139,7 +139,136 @@ export default function Home() {
           </p>
         </div>
       </section>
+import React from 'react';
 
+export default function HeritageSection() {
+  return (
+    <section id="heritage" className="py-32 px-6 bg-slate-900 overflow-hidden relative border-y border-slate-800">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-20 items-start">
+          
+          {/* Left: Heritage Narrative */}
+          <div className="lg:col-span-7">
+            <div className="mb-24">
+              {/* 로고 삭제됨 */}
+              <h2 className="text-4xl md:text-5xl font-extralight text-slate-200 tracking-tight leading-[1.8] mb-8">
+                Heritage: 15년의 신뢰
+              </h2>
+              {/* 줄 간격 2배 확대 및 회색조 적용 */}
+              <p className="text-3xl md:text-4xl font-thin text-slate-500 tracking-widest leading-[2.5]">
+                "한번도 홍보하지 않습니다"
+              </p>
+            </div>
+
+            <div className="space-y-16 text-lg text-slate-400 font-light">
+              <div className="bg-slate-800/20 p-10 rounded-[2rem] border border-slate-700/30 backdrop-blur-sm hover:bg-slate-800/30 transition-colors duration-500">
+                <h3 className="text-xl font-medium text-slate-200 mb-8 flex items-center tracking-tight">
+                  <span className="w-12 h-[1px] bg-slate-600 mr-6"></span>
+                  오직 경험에서 경험으로
+                </h3>
+                <ul className="leading-[2.2] text-slate-400 space-y-3">
+                  <li className="flex items-start">
+                    <span className="mr-3">-</span>
+                    2011년 당시 개업 상담기관이라는 낯선 길을 시작함
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3">-</span>
+                    단 한번도 광고하지 않은 곳
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3">-</span>
+                    사회적 리더들과 이용자의 소개만으로 일궈진 시간들
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-slate-800/20 p-10 rounded-[2rem] border border-slate-700/30 backdrop-blur-sm hover:bg-slate-800/30 transition-colors duration-500">
+                <h3 className="text-xl font-medium text-slate-200 mb-8 flex items-center tracking-tight">
+                  <span className="w-12 h-[1px] bg-slate-600 mr-6"></span>
+                  책임의 Heritage
+                </h3>
+                <ul className="leading-[2.2] text-slate-400 space-y-3">
+                  <li className="flex items-start">
+                    <span className="mr-3">-</span>
+                    단순한 상담을 넘어,
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3">-</span>
+                    심리상담 전문가 양성을 위한,
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3">-</span>
+                    개인분석과 수퍼비전(Supervision),
+                  </li>
+                  <li className="flex items-start">
+                    <span className="mr-3">-</span>
+                    상담전문가를 양성을 위한 책임
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Milestone Timeline */}
+          <div className="lg:col-span-5">
+            <div className="bg-slate-950/80 p-12 rounded-[2.5rem] border border-slate-800/50 shadow-2xl sticky top-32">
+              <h3 className="text-2xl font-light text-slate-200 mb-16 flex items-center tracking-[0.2em] uppercase">
+                {/* SVG Icon 직접 삽입하여 오류 방지 */}
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="1.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  className="mr-5 text-slate-500"
+                >
+                  <circle cx="12" cy="8" r="7"/>
+                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                </svg>
+                신뢰의 궤적
+              </h3>
+              
+              <div className="space-y-14 relative pl-4">
+                {/* Timeline Vertical Line */}
+                <div className="absolute left-[27px] top-2 bottom-2 w-[1px] bg-gradient-to-b from-slate-800 via-slate-700 to-slate-800"></div>
+                
+                {[
+                  { year: "2011", text: "드림심리상담센터 설립 (대구 수성구 수성동)" },
+                  { year: "2012", text: "한국심리학회 상담심리사 1급 자격 취득(수련감독전문가)" },
+                  { year: "2014", text: "국가 청소년상담사 자격연수 강사(~현재)" },
+                  { year: "2017", text: "한국심리학회 상담심리사 1급 주수련감독전문가 자격 획득" },
+                  { year: "2017", text: "드림심리상담센터 이전 (대구 수성구 범어동) 및 소수 전문가 양성 시작" }
+                ].map((m, idx) => (
+                  <div key={idx} className="relative pl-12 group">
+                    {/* Timeline Dot */}
+                    <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center group-hover:border-slate-500 group-hover:bg-slate-800 transition-all duration-500 z-10">
+                      <div className="w-1.5 h-1.5 bg-slate-600 group-hover:bg-slate-300 rounded-full transition-colors"></div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="space-y-2">
+                      <span className="text-slate-500 font-medium text-sm tracking-[0.2em] block mb-1 group-hover:text-slate-400 transition-colors">
+                        {m.year}
+                      </span>
+                      <p className="text-slate-400 font-light leading-relaxed group-hover:text-slate-200 transition-colors">
+                        {m.text}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
       {/* Professional Features Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-slate-800 to-gray-800">
         <div className="max-w-6xl mx-auto">
