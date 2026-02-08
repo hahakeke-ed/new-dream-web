@@ -77,12 +77,13 @@ export default function Home() {
                 </div>
               ))}
 
+             {/* 센터소식 및 칼럼 버튼 (이름 변경 완료) */}
               <div className="relative">
                 <Link 
                   href="/board" 
                   className="text-slate-200 hover:text-amber-400 transition-colors cursor-pointer whitespace-nowrap text-lg font-medium tracking-wide flex items-center"
                 >
-                  센터소식 및 칼럼
+                  소식 및 칼럼  {/* <-- 여기 글자만 수정하시면 됩니다 */}
                   {hasNewPost && (
                     <span className="absolute -top-3 -right-2 flex h-4 w-4">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
