@@ -18,7 +18,6 @@ export default function Home() {
     return diffDays >= 0 && diffDays <= 7;
   });
 
-  // 1. 메뉴 구성 변경 (Heritage, Private Insight, Super Vision)
   const menuItems = [
     {
       id: 'heritage',
@@ -65,7 +64,7 @@ export default function Home() {
               />
             </Link>
             
-            {/* 네비게이션 (중복 에러 수정됨) */}
+            {/* 네비게이션 */}
             <nav className="hidden md:flex items-center space-x-10 relative" ref={navRef}>
               {menuItems.map((item) => (
                 <div key={item.id} className="relative">
@@ -80,7 +79,7 @@ export default function Home() {
                 </div>
               ))}
 
-              {/* Master’s Journal 버튼 (이름 변경 완료) */}
+              {/* Master’s Journal 버튼 */}
               <div className="relative">
                 <Link 
                   href="/board" 
@@ -98,7 +97,7 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* 툴팁 (설명창) */}
+              {/* 툴팁 */}
               {activeTooltip && (
                 <div className="absolute top-full left-0 right-0 mt-2 z-50">
                   <div className="bg-slate-800 text-white p-6 rounded-xl shadow-2xl border border-slate-600 w-80">
@@ -112,7 +111,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 툴팁 닫기용 배경 */}
         {activeTooltip && (
           <div 
             className="fixed inset-0 z-40" 
@@ -139,136 +137,118 @@ export default function Home() {
           </p>
         </div>
       </section>
-import React from 'react';
 
-export default function HeritageSection() {
-  return (
-    <section id="heritage" className="py-32 px-6 bg-slate-900 overflow-hidden relative border-y border-slate-800">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-20 items-start">
-          
-          {/* Left: Heritage Narrative */}
-          <div className="lg:col-span-7">
-            <div className="mb-24">
-              {/* 로고 삭제됨 */}
-              <h2 className="text-4xl md:text-5xl font-extralight text-slate-200 tracking-tight leading-[1.8] mb-8">
-                Heritage: 15년의 신뢰
-              </h2>
-              {/* 줄 간격 2배 확대 및 회색조 적용 */}
-              <p className="text-3xl md:text-4xl font-thin text-slate-500 tracking-widest leading-[2.5]">
-                "한번도 홍보하지 않습니다"
-              </p>
-            </div>
-
-            <div className="space-y-16 text-lg text-slate-400 font-light">
-              <div className="bg-slate-800/20 p-10 rounded-[2rem] border border-slate-700/30 backdrop-blur-sm hover:bg-slate-800/30 transition-colors duration-500">
-                <h3 className="text-xl font-medium text-slate-200 mb-8 flex items-center tracking-tight">
-                  <span className="w-12 h-[1px] bg-slate-600 mr-6"></span>
-                  오직 경험에서 경험으로
-                </h3>
-                <ul className="leading-[2.2] text-slate-400 space-y-3">
-                  <li className="flex items-start">
-                    <span className="mr-3">-</span>
-                    2011년 당시 개업 상담기관이라는 낯선 길을 시작함
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-3">-</span>
-                    단 한번도 광고하지 않은 곳
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-3">-</span>
-                    사회적 리더들과 이용자의 소개만으로 일궈진 시간들
-                  </li>
-                </ul>
+      {/* ========================================= */}
+      {/* Heritage Section (여기 통합되었습니다) */}
+      {/* ========================================= */}
+      <section id="heritage" className="py-32 px-6 bg-slate-900 overflow-hidden relative border-y border-slate-800">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-12 gap-20 items-start">
+            
+            {/* Left: Heritage Narrative */}
+            <div className="lg:col-span-7">
+              <div className="mb-24">
+                <h2 className="text-4xl md:text-5xl font-extralight text-slate-200 tracking-tight leading-[1.8] mb-8">
+                  Heritage: 15년의 신뢰
+                </h2>
+                <p className="text-3xl md:text-4xl font-thin text-slate-500 tracking-widest leading-[2.5]">
+                  "한번도 홍보하지 않습니다"
+                </p>
               </div>
 
-              <div className="bg-slate-800/20 p-10 rounded-[2rem] border border-slate-700/30 backdrop-blur-sm hover:bg-slate-800/30 transition-colors duration-500">
-                <h3 className="text-xl font-medium text-slate-200 mb-8 flex items-center tracking-tight">
-                  <span className="w-12 h-[1px] bg-slate-600 mr-6"></span>
-                  책임의 Heritage
-                </h3>
-                <ul className="leading-[2.2] text-slate-400 space-y-3">
-                  <li className="flex items-start">
-                    <span className="mr-3">-</span>
-                    단순한 상담을 넘어,
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-3">-</span>
-                    심리상담 전문가 양성을 위한,
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-3">-</span>
-                    개인분석과 수퍼비전(Supervision),
-                  </li>
-                  <li className="flex items-start">
-                    <span className="mr-3">-</span>
-                    상담전문가를 양성을 위한 책임
-                  </li>
-                </ul>
+              <div className="space-y-16 text-lg text-slate-400 font-light">
+                <div className="bg-slate-800/20 p-10 rounded-[2rem] border border-slate-700/30 backdrop-blur-sm hover:bg-slate-800/30 transition-colors duration-500">
+                  <h3 className="text-xl font-medium text-slate-200 mb-8 flex items-center tracking-tight">
+                    <span className="w-12 h-[1px] bg-slate-600 mr-6"></span>
+                    오직 경험에서 경험으로
+                  </h3>
+                  <ul className="leading-[2.2] text-slate-400 space-y-3">
+                    <li className="flex items-start">
+                      <span className="mr-3">-</span>
+                      2011년 당시 개업 상담기관이라는 낯선 길을 시작함
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-3">-</span>
+                      단 한번도 광고하지 않은 곳
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-3">-</span>
+                      사회적 리더들과 이용자의 소개만으로 일궈진 시간들
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="bg-slate-800/20 p-10 rounded-[2rem] border border-slate-700/30 backdrop-blur-sm hover:bg-slate-800/30 transition-colors duration-500">
+                  <h3 className="text-xl font-medium text-slate-200 mb-8 flex items-center tracking-tight">
+                    <span className="w-12 h-[1px] bg-slate-600 mr-6"></span>
+                    책임의 Heritage
+                  </h3>
+                  <ul className="leading-[2.2] text-slate-400 space-y-3">
+                    <li className="flex items-start">
+                      <span className="mr-3">-</span>
+                      단순한 상담을 넘어,
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-3">-</span>
+                      심리상담 전문가 양성을 위한,
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-3">-</span>
+                      개인분석과 수퍼비전(Supervision),
+                    </li>
+                    <li className="flex items-start">
+                      <span className="mr-3">-</span>
+                      상담전문가를 양성을 위한 책임
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Right: Milestone Timeline */}
-          <div className="lg:col-span-5">
-            <div className="bg-slate-950/80 p-12 rounded-[2.5rem] border border-slate-800/50 shadow-2xl sticky top-32">
-              <h3 className="text-2xl font-light text-slate-200 mb-16 flex items-center tracking-[0.2em] uppercase">
-                {/* SVG Icon 직접 삽입하여 오류 방지 */}
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  width="24" 
-                  height="24" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  strokeWidth="1.5" 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  className="mr-5 text-slate-500"
-                >
-                  <circle cx="12" cy="8" r="7"/>
-                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
-                </svg>
-                신뢰의 궤적
-              </h3>
-              
-              <div className="space-y-14 relative pl-4">
-                {/* Timeline Vertical Line */}
-                <div className="absolute left-[27px] top-2 bottom-2 w-[1px] bg-gradient-to-b from-slate-800 via-slate-700 to-slate-800"></div>
+            {/* Right: Milestone Timeline */}
+            <div className="lg:col-span-5">
+              <div className="bg-slate-950/80 p-12 rounded-[2.5rem] border border-slate-800/50 shadow-2xl sticky top-32">
+                <h3 className="text-2xl font-light text-slate-200 mb-16 flex items-center tracking-[0.2em] uppercase">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mr-5 text-slate-500">
+                    <circle cx="12" cy="8" r="7"/>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                  </svg>
+                  신뢰의 궤적
+                </h3>
                 
-                {[
-                  { year: "2011", text: "드림심리상담센터 설립 (대구 수성구 수성동)" },
-                  { year: "2012", text: "한국심리학회 상담심리사 1급 자격 취득(수련감독전문가)" },
-                  { year: "2014", text: "국가 청소년상담사 자격연수 강사(~현재)" },
-                  { year: "2017", text: "한국심리학회 상담심리사 1급 주수련감독전문가 자격 획득" },
-                  { year: "2017", text: "드림심리상담센터 이전 (대구 수성구 범어동) 및 소수 전문가 양성 시작" }
-                ].map((m, idx) => (
-                  <div key={idx} className="relative pl-12 group">
-                    {/* Timeline Dot */}
-                    <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center group-hover:border-slate-500 group-hover:bg-slate-800 transition-all duration-500 z-10">
-                      <div className="w-1.5 h-1.5 bg-slate-600 group-hover:bg-slate-300 rounded-full transition-colors"></div>
+                <div className="space-y-14 relative pl-4">
+                  {/* Timeline Vertical Line */}
+                  <div className="absolute left-[27px] top-2 bottom-2 w-[1px] bg-gradient-to-b from-slate-800 via-slate-700 to-slate-800"></div>
+                  
+                  {[
+                    { year: "2011", text: "드림심리상담센터 설립 (대구 수성구 수성동)" },
+                    { year: "2012", text: "한국심리학회 상담심리사 1급 자격 취득(수련감독전문가)" },
+                    { year: "2014", text: "국가 청소년상담사 자격연수 강사(~현재)" },
+                    { year: "2017", text: "한국심리학회 상담심리사 1급 주수련감독전문가 자격 획득" },
+                    { year: "2017", text: "드림심리상담센터 이전 (대구 수성구 범어동) 및 소수 전문가 양성 시작" }
+                  ].map((m, idx) => (
+                    <div key={idx} className="relative pl-12 group">
+                      <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center group-hover:border-slate-500 group-hover:bg-slate-800 transition-all duration-500 z-10">
+                        <div className="w-1.5 h-1.5 bg-slate-600 group-hover:bg-slate-300 rounded-full transition-colors"></div>
+                      </div>
+                      <div className="space-y-2">
+                        <span className="text-slate-500 font-medium text-sm tracking-[0.2em] block mb-1 group-hover:text-slate-400 transition-colors">
+                          {m.year}
+                        </span>
+                        <p className="text-slate-400 font-light leading-relaxed group-hover:text-slate-200 transition-colors">
+                          {m.text}
+                        </p>
+                      </div>
                     </div>
-                    
-                    {/* Content */}
-                    <div className="space-y-2">
-                      <span className="text-slate-500 font-medium text-sm tracking-[0.2em] block mb-1 group-hover:text-slate-400 transition-colors">
-                        {m.year}
-                      </span>
-                      <p className="text-slate-400 font-light leading-relaxed group-hover:text-slate-200 transition-colors">
-                        {m.text}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
 
+          </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
+
       {/* Professional Features Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-slate-800 to-gray-800">
         <div className="max-w-6xl mx-auto">
@@ -715,102 +695,4 @@ export default function HeritageSection() {
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <i className="ri-group-line text-white text-sm"></i>
-                      </div>
-                      <div>
-                        <span className="text-slate-300 font-medium">부부상담, 가족상담</span>
-                        <p className="text-slate-400 text-sm">90분 기준</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <i className="ri-clipboard-line text-white text-sm"></i>
-                      </div>
-                      <div>
-                        <span className="text-slate-300 font-medium">종합심리검사 (Full Battery)</span>
-                        <p className="text-slate-400 text-sm">검사시행 3~4시간(임상심리전문가)<br />해석상담 1시간(상담심리전문가)</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>{/* step2 */}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-slate-100 mb-8">상담 예약</h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* 문자 예약 */}
-            <div className="bg-slate-800 p-8 rounded-2xl border border-slate-600 hover:border-amber-400 transition">
-              <div className="w-16 h-16 bg-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  <path d="M4 4h16v12H7l-3 3V4z" stroke="white" strokeWidth="1.5" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">문자 예약</h3>
-              <p className="text-slate-400 mb-4">바로 문의 내용을 보내세요</p>
-              <div className="flex justify-center">
-                <SmsButton
-                  className="bg-amber-600 border-amber-600 text-white hover:bg-amber-500 hover:border-amber-500"
-                  body="안녕하세요. [이름/희망시간/상담유형] 남깁니다."
-                >
-                  문자 예약
-                </SmsButton>
-              </div>
-              <p className="text-xs text-center text-slate-400 mt-3">
-                PC에서는 번호와 내용이 복사됩니다. 휴대폰에서 전송해주세요.
-              </p>
-            </div>
-
-            {/* 찾아오시는 길 */}
-            <div className="bg-slate-800 p-8 rounded-2xl border border-slate-600">
-              <div className="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <i className="ri-map-pin-2-line text-white text-2xl"></i>
-              </div>
-              <h3 className="text-xl font-bold text-slate-100 mb-4">찾아오시는 길</h3>
-              <p className="text-slate-400 mb-4">
-                대구광역시 수성구 동대구로 346<br />
-                범어서한포레스트 오피스텔
-              </p>
-              <a 
-                href="https://map.naver.com/v5/search/%EB%93%9C%EB%A6%BC%EC%8B%AC%EB%A6%AC%EC%83%81%EB%8B%B4%EC%84%BC%ED%84%B0" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-500 transition-colors cursor-pointer whitespace-nowrap"
-              >
-                네이버 지도 보기
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12 px-4 border-t border-slate-800">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center space-x-4 mb-6">
-            <img 
-              src="https://readdy.ai/api/search-image?query=professional%20psychology%20counseling%20center%20logo%20with%20brain%20and%20heart%20symbol%2C%20modern%20minimalist%20design%2C%20warm%20colors%20with%20blue%20and%20amber%20accents%2C%20mental%20health%20therapy%20icon%2C%20clean%20geometric%20style&width=60&height=60&seq=footer-logo&orientation=squarish" 
-              alt="드림심리상담센터 로고" 
-              className="w-10 h-10 object-cover object-top rounded-lg"
-            />
-            <div className="flex flex-col">
-              <h3 className="text-2xl font-['Pacifico'] text-amber-400 leading-tight">드림심리상담센터</h3>
-              <p className="text-sm text-slate-400 font-medium">전문심리상담기관</p>
-            </div>
-          </div>
-          <p className="text-slate-400 mb-8">전문적이고 따뜻한 심리상담으로 당신의 마음을 돌봅니다.</p>
-          <div className="border-t border-slate-800 pt-8">
-            <p className="text-slate-500">&copy; 2011 드림심리상담센터. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
-    </div>
-  );
-}
+                      <div className="w-6 h-6 bg-
