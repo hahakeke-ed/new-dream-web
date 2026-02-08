@@ -23,19 +23,19 @@ export default function Home() {
     {
       id: 'heritage',
       name: 'Heritage',
-      href: '/heritage', // 새로운 페이지로 이동 (추후 생성 필요)
+      href: '/heritage', 
       description: '드림심리상담센터의 역사와 철학을 담은 공간입니다.'
     },
     {
       id: 'private-insight',
       name: 'Private Insight',
-      href: '#private-insight', // 현재 페이지의 특정 섹션으로 스크롤 이동
+      href: '#private-insight', 
       description: '나를 깊이 있게 들여다보는 프리미엄 심리 분석 서비스입니다.'
     },
     {
       id: 'super-vision',
       name: 'Super Vision',
-      href: '#super-vision', // 현재 페이지의 특정 섹션으로 스크롤 이동
+      href: '#super-vision', 
       description: '상담 전문가를 위한 체계적인 교육 및 수퍼비전 프로그램입니다.'
     }
   ];
@@ -49,31 +49,30 @@ export default function Home() {
   };
 
   return (
-    // 주석 제거 및 폰트 적용
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 font-[family-name:var(--font-noto-sans)]">
       
+      {/* Header */}
       <header className="bg-slate-900 shadow-lg border-b border-slate-700 relative">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             
+            {/* 로고 */}
             <Link href="/" className="flex items-center">
               <img 
                 src="/new_logo.png" 
                 alt="드림심리상담센터" 
-                // h-13을 h-14(약 56px)로 변경했습니다. 더 키우려면 h-16, h-20 등을 사용하세요.
                 className="h-16 w-auto object-contain"
               />
             </Link>
             
-{/* 115번째 줄 부근: <nav> 태그 시작부터 끝까지 교체 */}
+            {/* 네비게이션 (중복 에러 수정됨) */}
             <nav className="hidden md:flex items-center space-x-10 relative" ref={navRef}>
               {menuItems.map((item) => (
                 <div key={item.id} className="relative">
-                  {/* 기존 button 태그를 Link 태그로 변경하여 클릭 시 바로 이동하게 수정 */}
                   <Link
                     href={item.href}
-                    onMouseEnter={() => setActiveTooltip(item.id)} // 마우스 올리면 설명 보임
-                    onMouseLeave={() => setActiveTooltip(null)}    // 마우스 떼면 설명 사라짐
+                    onMouseEnter={() => setActiveTooltip(item.id)} 
+                    onMouseLeave={() => setActiveTooltip(null)}    
                     className="text-slate-200 hover:text-amber-400 transition-colors cursor-pointer whitespace-nowrap text-lg font-medium tracking-wide py-2 block"
                   >
                     {item.name}
@@ -81,13 +80,13 @@ export default function Home() {
                 </div>
               ))}
 
-              {/* 센터소식 및 칼럼 버튼 */}
+              {/* Master’s Journal 버튼 (이름 변경 완료) */}
               <div className="relative">
                 <Link 
                   href="/board" 
                   className="text-slate-200 hover:text-amber-400 transition-colors cursor-pointer whitespace-nowrap text-lg font-medium tracking-wide flex items-center"
                 >
-                  센터소식 및 칼럼
+                  Master’s Journal
                   {hasNewPost && (
                     <span className="absolute -top-3 -right-2 flex h-4 w-4">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
@@ -99,20 +98,9 @@ export default function Home() {
                 </Link>
               </div>
 
-              {/* 툴팁 (설명창) - 마우스를 올렸을 때만 나타납니다 */}
+              {/* 툴팁 (설명창) */}
               {activeTooltip && (
                 <div className="absolute top-full left-0 right-0 mt-2 z-50">
-                  <div className="bg-slate-800 text-white p-6 rounded-xl shadow-2xl border border-slate-600 w-80">
-                    <p className="text-sm leading-relaxed text-slate-300">
-                      {menuItems.find(item => item.id === activeTooltip)?.description}
-                    </p>
-                  </div>
-                </div>
-              )}
-            </nav>
-
-              {activeTooltip && (
-                <div className="absolute top-full left-0 right-0 mt-4 z-50">
                   <div className="bg-slate-800 text-white p-6 rounded-xl shadow-2xl border border-slate-600 w-80">
                     <p className="text-sm leading-relaxed text-slate-300">
                       {menuItems.find(item => item.id === activeTooltip)?.description}
@@ -124,6 +112,7 @@ export default function Home() {
           </div>
         </div>
 
+        {/* 툴팁 닫기용 배경 */}
         {activeTooltip && (
           <div 
             className="fixed inset-0 z-40" 
@@ -673,7 +662,7 @@ export default function Home() {
         </div>
       </section>
 
-     {/* Footer */}
+      {/* Footer */}
       <footer className="bg-gray-900 text-white py-12 px-4 border-t border-slate-800">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-4 mb-6">
