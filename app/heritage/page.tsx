@@ -226,6 +226,67 @@ export default function HeritagePage() {
         </div>
       </section>
 
+      {/* Private Studio Info */}
+      <section className="bg-[#1A252F] text-white py-24 px-6 overflow-hidden relative">
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex-1">
+              <h2 className="text-3xl md:text-5xl font-serif mb-8 leading-tight">
+                리더를 위한<br/>
+                프라이빗 스튜디오
+              </h2>
+              <p className="text-white/60 font-light leading-relaxed mb-8">
+                대구 수성구 범어동에 위치한 드림 헤리티지는 철저한 예약제와 동선 관리를 통해 완벽한 프라이버시를 보장합니다. 사회적 리더 및 VIP를 위한 심층 성찰 세션을 위해 설계된 최적의 공간입니다.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <span className="px-4 py-2 border border-white/20 rounded-full text-xs tracking-widest uppercase font-medium">100% 소개 기반</span>
+                <span className="px-4 py-2 border border-white/20 rounded-full text-xs tracking-widest uppercase font-medium">프라이빗 세션</span>
+                <span className="px-4 py-2 border border-white/20 rounded-full text-xs tracking-widest uppercase font-medium">무광고 원칙</span>
+              </div>
+            </div>
+            <div className="w-full md:w-1/3 aspect-square bg-[#D4AF37]/10 rounded-full flex items-center justify-center border border-[#D4AF37]/30">
+              <div className="text-center">
+                <div className="text-5xl font-serif text-[#D4AF37]">15</div>
+                <div className="text-[10px] tracking-[0.4em] uppercase opacity-50">Years of Trust</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#D4AF37]/5 blur-[100px] -mr-48 -mt-48 rounded-full"></div>
+      </section>
+
+      {/* Footer / Contact */}
+      <footer id="contact" className="bg-[#F9F8F6] pt-24 pb-12 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-16 mb-24">
+            <div>
+              <h2 className="text-3xl font-serif text-[#1A252F] mb-8">성찰의 시작은<br/>조용한 공간에서부터.</h2>
+              <div className="space-y-6">
+                <div className="flex items-center space-x-4">
+                  <IconMapPin className="text-[#D4AF37]" size={20} />
+                  <span className="text-gray-600 font-light">대구광역시 수성구 범어동 (Private Studio)</span>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <IconCalendar className="text-[#D4AF37]" size={20} />
+                  <span className="text-gray-600 font-light">100% 사전 예약제 운영</span>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <IconUserCheck className="text-[#D4AF37]" size={20} />
+                  <span className="text-gray-600 font-light">기존 내담자의 추천을 우선합니다.</span>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+              <h4 className="font-serif text-xl mb-6">Reservation Inquiry</h4>
+              <p className="text-sm text-gray-500 mb-8 leading-relaxed">
+                드림 헤리티지의 성찰 세션은 깊이 있는 임상을 위해 한정된 인원으로만 운영됩니다. <br/>
+                상담 문의는 아래 연락처로 성함과 함께 남겨주시면 확인 후 연락드리겠습니다.
+              </p>
+              <a href="tel:053-759-1282" className="block w-full py-4 bg-[#1A252F] text-white text-center rounded-xl font-medium hover:bg-[#2C3E50] transition-colors tracking-widest">
+                CONTACT INQUIRY
+              </a>
+            </div>
+          </div>
 
           <div className="pt-12 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 tracking-widest uppercase">
             <p>© 2026 DREAM HERITAGE. ALL RIGHTS RESERVED.</p>
