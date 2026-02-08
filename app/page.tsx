@@ -695,4 +695,102 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-
+                      <div className="w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i className="ri-group-line text-white text-sm"></i>
+                      </div>
+                      <div>
+                        <span className="text-slate-300 font-medium">부부상담, 가족상담</span>
+                        <p className="text-slate-400 text-sm">90분 기준</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-6 h-6 bg-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <i className="ri-clipboard-line text-white text-sm"></i>
+                      </div>
+                      <div>
+                        <span className="text-slate-300 font-medium">종합심리검사 (Full Battery)</span>
+                        <p className="text-slate-400 text-sm">검사시행 3~4시간(임상심리전문가)<br />해석상담 1시간(상담심리전문가)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>{/* step2 */}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-slate-100 mb-8">상담 예약</h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* 문자 예약 */}
+            <div className="bg-slate-800 p-8 rounded-2xl border border-slate-600 hover:border-amber-400 transition">
+              <div className="w-16 h-16 bg-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <path d="M4 4h16v12H7l-3 3V4z" stroke="white" strokeWidth="1.5" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-slate-100 mb-4">문자 예약</h3>
+              <p className="text-slate-400 mb-4">바로 문의 내용을 보내세요</p>
+              <div className="flex justify-center">
+                <SmsButton
+                  className="bg-amber-600 border-amber-600 text-white hover:bg-amber-500 hover:border-amber-500"
+                  body="안녕하세요. [이름/희망시간/상담유형] 남깁니다."
+                >
+                  문자 예약
+                </SmsButton>
+              </div>
+              <p className="text-xs text-center text-slate-400 mt-3">
+                PC에서는 번호와 내용이 복사됩니다. 휴대폰에서 전송해주세요.
+              </p>
+            </div>
+
+            {/* 찾아오시는 길 */}
+            <div className="bg-slate-800 p-8 rounded-2xl border border-slate-600">
+              <div className="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <i className="ri-map-pin-2-line text-white text-2xl"></i>
+              </div>
+              <h3 className="text-xl font-bold text-slate-100 mb-4">찾아오시는 길</h3>
+              <p className="text-slate-400 mb-4">
+                대구광역시 수성구 동대구로 346<br />
+                범어서한포레스트 오피스텔
+              </p>
+              <a 
+                href="https://map.naver.com/v5/search/%EB%93%9C%EB%A6%BC%EC%8B%AC%EB%A6%AC%EC%83%81%EB%8B%B4%EC%84%BC%ED%84%B0" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-500 transition-colors cursor-pointer whitespace-nowrap"
+              >
+                네이버 지도 보기
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12 px-4 border-t border-slate-800">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex items-center justify-center space-x-4 mb-6">
+            <img 
+              src="https://readdy.ai/api/search-image?query=professional%20psychology%20counseling%20center%20logo%20with%20brain%20and%20heart%20symbol%2C%20modern%20minimalist%20design%2C%20warm%20colors%20with%20blue%20and%20amber%20accents%2C%20mental%20health%20therapy%20icon%2C%20clean%20geometric%20style&width=60&height=60&seq=footer-logo&orientation=squarish" 
+              alt="드림심리상담센터 로고" 
+              className="w-10 h-10 object-cover object-top rounded-lg"
+            />
+            <div className="flex flex-col">
+              <h3 className="text-2xl font-['Pacifico'] text-amber-400 leading-tight">드림심리상담센터</h3>
+              <p className="text-sm text-slate-400 font-medium">전문심리상담기관</p>
+            </div>
+          </div>
+          <p className="text-slate-400 mb-8">전문적이고 따뜻한 심리상담으로 당신의 마음을 돌봅니다.</p>
+          <div className="border-t border-slate-800 pt-8">
+            <p className="text-slate-500">&copy; 2011 드림심리상담센터. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
