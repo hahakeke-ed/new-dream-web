@@ -225,7 +225,7 @@ export default function Home() {
                     { year: "2012", text: "한국심리학회 상담심리사 1급 자격 취득(수련감독전문가)" },
                     { year: "2014", text: "국가 청소년상담사 자격연수 강사(~현재)" },
                     { year: "2017", text: "한국심리학회 상담심리사 1급 주수련감독전문가 자격 획득" },
-                    { year: "2017", text: "드림심리상담센터 이전 (대구 수성구 범어동) 및 소수 전문가 양성 시작" }
+                    { year: "2017", text: "드림심리상담센터 이전 (대구 수성구 범어동) 및 전문가 수퍼비전 시작" }
                   ].map((m, idx) => (
                     <div key={idx} className="relative pl-12 group">
                       <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center group-hover:border-slate-500 group-hover:bg-slate-800 transition-all duration-500 z-10">
