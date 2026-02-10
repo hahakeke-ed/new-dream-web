@@ -42,7 +42,7 @@ export default function HeritagePage() {
       period: "2018 – Present",
       title: "리더를 위한 성찰의 공간을 완성하다",
       items: [
-        "공간의 진화: 대구 수성구 범어동 프라이빗 스튜디오 확장",
+        "공간의 진화: 대구 수성구 범어동 프라이빗 스튜디오 스타일 확장",
         "Private Insight: 사회적 리더 및 VIP를 위한 심층 성찰 세션",
         "15 Years of Trust: 100% 소개 기반의 프리미엄 네트워크 구축"
       ]
@@ -107,8 +107,8 @@ export default function HeritagePage() {
           
           <div className="w-16 h-[1px] bg-[#D4AF37] mx-auto mb-8"></div>
           <p className="text-white/70 max-w-2xl mx-auto leading-relaxed font-light text-lg">
-            2011년부터 이어져 온 침묵의 약속. <br/>
-            화려한 홍보 대신 내담자의 삶이 변하는 과정만으로 실력을 증명합니다.
+            2011년부터 이어져 온 조용한 약속. <br/>
+            화려한 홍보 대신 내담자의 삶이 변하는 과정만으로 증명합니다.
           </p>
         </div>
         
@@ -170,7 +170,7 @@ export default function HeritagePage() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#1A252F]">Gatekeeper의 사명</h4>
-                  <p className="text-sm text-gray-500">엄격한 질적 관리와 전문가 양성을 통해 상담 생태계의 가치를 지킵니다.</p>
+                  <p className="text-sm text-gray-500">엄격한 질적 관리와 전문가 양성을 통해 내담자의 삶을 지킵니다.</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
