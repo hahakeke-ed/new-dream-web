@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import SmsButton from '../../components/SmsButton'; // 이 줄을 추가하세요!
 
 export default function PrivateInsightPage() {
   // 아이콘 직접 구현 (lucide-react 에러 방지용)
@@ -137,10 +138,16 @@ export default function PrivateInsightPage() {
       {/* CTA Section */}
       <section className="py-40 px-6 border-t border-white/5 bg-[#0d1421]/50">
         <div className="max-w-3xl mx-auto text-center">
-          <button className="px-16 py-6 bg-amber-600 hover:bg-amber-500 text-white rounded-full font-bold transition-all shadow-[0_20px_50px_rgba(217,119,6,0.3)] text-xl tracking-widest active:scale-95">
+          <SmsButton 
+            className="px-16 py-6 bg-amber-600 border-none hover:bg-amber-500 text-white rounded-full font-bold transition-all shadow-[0_20px_50px_rgba(217,119,6,0.3)] text-xl tracking-widest active:scale-95"
+            body="안녕하세요. Private Insight 성찰 세션 문의드립니다. [성함/희망시간]"
+          >
             문의하기
-          </button>
+          </SmsButton>
           <p className="mt-12 text-slate-500 text-sm tracking-[0.1em]">대구 수성구 범어동 | 100% 프라이빗 예약제</p>
+          <p className="text-xs text-center text-slate-600 mt-4">
+            PC에서는 번호와 내용이 복사됩니다. 휴대폰에서 전송해주세요.
+          </p>
         </div>
       </section>
 
