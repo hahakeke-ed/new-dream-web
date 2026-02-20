@@ -18,6 +18,7 @@ export default function Home() {
     return diffDays >= 0 && diffDays <= 7;
   });
 
+  // 👇 1, 2번 문제 해결: 메뉴명과 이동 링크(href)가 완벽하게 수정되었습니다! 👇
   const menuItems = [
     {
       id: 'heritage',
@@ -28,14 +29,14 @@ export default function Home() {
     {
       id: 'private-insight',
       name: 'Private Insight',
-      href: 'private-insight', 
+      href: '/private-insight', 
       description: '나를 깊이 있게 들여다보는 프리미엄 심리 분석 서비스입니다.'
     },
     {
-      id: 'super-vision',
-      name: 'Super Vision',
-      href: '#super-vision', 
-      description: '상담 전문가를 위한 체계적인 교육 및 수퍼비전 프로그램입니다.'
+      id: 'professional-track',
+      name: 'Professional Track',
+      href: '/professional-track', 
+      description: '상담 전문가를 위한 체계적인 수퍼비전 및 개인분석 마스터 클래스입니다.'
     }
   ];
 
@@ -48,10 +49,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 font-[family-name:var(--font-noto-sans)]">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 font-[family-name:var(--font-noto-sans)] scroll-smooth">
       
       {/* Header */}
-      <header className="bg-slate-900 shadow-lg border-b border-slate-700 relative">
+      <header className="bg-slate-900 shadow-lg border-b border-slate-700 fixed w-full top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
             
@@ -119,9 +120,9 @@ export default function Home() {
         )}
       </header>
 
-      {/* Hero Section */}
+      {/* Hero Section (상단 배너) */}
       <section 
-        className="relative py-32 px-4 text-white min-h-screen flex items-center"
+        className="relative pt-40 pb-32 px-4 text-white min-h-screen flex items-center mt-16"
         style={{
           backgroundImage: `linear-gradient(rgba(30, 41, 59, 0.7), rgba(30, 41, 59, 0.7)), url('https://readdy.ai/api/search-image?query=Professional%20psychology%20counseling%20center%20interior%20with%20comfortable%20seating%20area%2C%20warm%20lighting%20with%20soft%20neutral%20tones%2C%20therapy%20office%20with%20calming%20ambiance%20for%20mental%20health%20services%2C%20modern%20design%20with%20comfortable%20chairs%20and%20plants%2C%20peaceful%20atmosphere%20with%20warm%20natural%20lighting&width=1200&height=600&seq=main-hero-v26&orientation=landscape')`,
           backgroundSize: 'cover',
@@ -138,10 +139,124 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========================================= */}
-      {/* Heritage Section (여기 통합되었습니다) */}
-      {/* ========================================= */}
-      <section id="heritage" className="py-32 px-6 bg-slate-900 overflow-hidden relative border-y border-slate-800">
+      {/* ======================================================== */}
+      {/* Private Insight 섹션 시작 */}
+      {/* ======================================================== */}
+      <div id="private-insight" className="bg-[#0a0f1a] text-slate-200 border-t border-slate-800 pt-20">
+        
+        {/* Intro */}
+        <section className="pt-20 pb-24 px-6">
+          <div className="max-w-5xl mx-auto text-center">
+            <h2 className="text-amber-500 text-sm font-bold tracking-[0.4em] mb-8 animate-fade-in uppercase">Premium Counseling for Leaders</h2>
+            <h3 className="text-4xl md:text-5xl font-black leading-[1.8] mb-12 text-white tracking-tight">
+              복잡한 삶의 현상, <br /> 
+              이면의 심리적 기제를 성찰하다
+            </h3>
+            <div className="w-24 h-[2px] bg-amber-500 mx-auto mb-12"></div>
+            <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto font-light">
+              성찰 능력이 뛰어난 리더에게는 장황한 위로보다 정교한 질문이 필요합니다. <br/>
+              단 한 번의 대화로 본질에 닿는 예리한 통찰을 경험하십시오.
+            </p>
+          </div>
+        </section>
+
+        {/* Core Principles Section */}
+        <section className="py-24 bg-gradient-to-b from-[#0a0f1a] to-[#0d1421] px-6 border-y border-white/5">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8">
+              
+              {/* Principle 1 */}
+              <div className="group p-10 rounded-[2.5rem] bg-white/[0.03] backdrop-blur-xl border border-white/10 hover:border-amber-500/40 hover:bg-white/[0.08] transition-all duration-500 shadow-2xl">
+                <div className="w-14 h-14 rounded-2xl bg-amber-500/20 flex items-center justify-center mb-10 group-hover:scale-110 transition-transform">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-500"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-white">밀도 높은 성찰</h3>
+                <p className="text-[10px] text-amber-500 font-bold tracking-[0.2em] mb-6 uppercase">Density over Duration</p>
+                <p className="text-slate-300 leading-relaxed font-light">
+                  긴 시간이 필요 없을 수 있습니다. 높은 지적 역량을 가진 당신에게 필요한 것은 
+                  전문가의 냉철한 따뜻함에서 시작되는, 본질을 관통하는 짧고 강력한 통찰입니다.
+                </p>
+              </div>
+
+              {/* Principle 2 */}
+              <div className="group p-10 rounded-[2.5rem] bg-white/[0.03] backdrop-blur-xl border border-white/10 hover:border-amber-500/40 hover:bg-white/[0.08] transition-all duration-500 shadow-2xl">
+                <div className="w-14 h-14 rounded-2xl bg-amber-500/20 flex items-center justify-center mb-10 group-hover:scale-110 transition-transform">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-500"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-white">심리적 경영</h3>
+                <p className="text-[10px] text-amber-500 font-bold tracking-[0.2em] mb-6 uppercase">Mental Stewardship</p>
+                <p className="text-slate-300 leading-relaxed font-light">
+                  심리상담은 일시적인 치유가 아니라 지속적인 자기 경영입니다. 
+                  정기적인 follow-up 세션을 통해 당신의 심리적 자산을 지키고 관리하는 
+                  최상의 컨디션을 유지합니다.
+                </p>
+              </div>
+
+              {/* Principle 3 */}
+              <div className="group p-10 rounded-[2.5rem] bg-white/[0.03] backdrop-blur-xl border border-white/10 hover:border-amber-500/40 hover:bg-white/[0.08] transition-all duration-500 shadow-2xl">
+                <div className="w-14 h-14 rounded-2xl bg-amber-500/20 flex items-center justify-center mb-10 group-hover:scale-110 transition-transform">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-amber-500"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-white">완벽한 프라이버시</h3>
+                <p className="text-[10px] text-amber-500 font-bold tracking-[0.2em] mb-6 uppercase">Absolute Privacy</p>
+                <p className="text-slate-300 leading-relaxed font-light">
+                  이 공간은 당신을 온전히 존중합니다. 철저한 예약제와 정교한 동선 설계를 통해 
+                  다른 내담자와 마주치지 않는 극도의 편안함과 비밀을 보장합니다.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Process Section */}
+        <section className="py-32 px-6 bg-[#0a0f1a]">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-24 text-white tracking-tight uppercase">The Insight Process</h2>
+            <div className="space-y-20">
+              <div className="flex gap-10 items-start">
+                <span className="text-5xl font-black text-amber-500/20">01</span>
+                <div className="pt-2">
+                  <h4 className="text-2xl font-bold mb-4 text-white">문의</h4>
+                  <p className="text-slate-400 text-lg leading-relaxed">문의를 남겨주시면 첫 연락부터 철저한 비밀이 보장됩니다.</p>
+                </div>
+              </div>
+              
+              <div className="flex gap-10 items-start">
+                <span className="text-5xl font-black text-amber-500/20">02</span>
+                <div className="pt-2">
+                  <h4 className="text-2xl font-bold mb-4 text-white">심층 성찰 세션 (Insight Session)</h4>
+                  <p className="text-slate-400 text-lg leading-relaxed">50분의 밀도 높은 대화를 통해 현재 현상 아래에 숨겨진 심리적 기제를 구조화하고 본질적인 답을 도출합니다.</p>
+                </div>
+              </div>
+              
+              <div className="flex gap-10 items-start">
+                <span className="text-5xl font-black text-amber-500/20">03</span>
+                <div className="pt-2">
+                  <h4 className="text-2xl font-bold mb-4 text-white">후속 관리 (Follow-up)</h4>
+                  <p className="text-slate-400 text-lg leading-relaxed">격월 혹은 분기별 세션을 통해 삶의 궤적을 점검하고 리더로서의 심리적 자산을 지속적으로 관리합니다.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-24 px-6 border-t border-white/5 bg-[#0d1421]/50">
+          <div className="max-w-3xl mx-auto text-center">
+            <a href="#contact" className="inline-block px-16 py-6 bg-amber-600 hover:bg-amber-500 text-white rounded-full font-bold transition-all shadow-[0_10px_30px_rgba(217,119,6,0.2)] text-xl tracking-widest active:scale-95 cursor-pointer">
+              상담 문의하기
+            </a>
+            <p className="mt-8 text-slate-500 text-sm tracking-[0.1em]">대구 수성구 범어동 | 100% 프라이빗 예약제</p>
+          </div>
+        </section>
+      </div>
+      {/* ======================================================== */}
+      {/* Private Insight 섹션 끝 */}
+      {/* ======================================================== */}
+
+      {/* Heritage Section */}
+      <section className="py-32 px-6 bg-slate-900 overflow-hidden relative border-t border-slate-800">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-20 items-start">
             
@@ -217,7 +332,6 @@ export default function Home() {
                 </h3>
                 
                 <div className="space-y-14 relative pl-4">
-                  {/* Timeline Vertical Line */}
                   <div className="absolute left-[27px] top-2 bottom-2 w-[1px] bg-gradient-to-b from-slate-800 via-slate-700 to-slate-800"></div>
                   
                   {[
@@ -225,7 +339,7 @@ export default function Home() {
                     { year: "2012", text: "한국심리학회 상담심리사 1급 자격 취득(수련감독전문가)" },
                     { year: "2014", text: "국가 청소년상담사 자격연수 강사(~현재)" },
                     { year: "2017", text: "한국심리학회 상담심리사 1급 주수련감독전문가 자격 획득" },
-                    { year: "2017", text: "드림심리상담센터 이전 (대구 수성구 범어동) 및 전문가 수퍼비전 시작" }
+                    { year: "2017", text: "드림심리상담센터 이전 (대구 수성구 범어동) 및 소수 전문가 양성 시작" }
                   ].map((m, idx) => (
                     <div key={idx} className="relative pl-12 group">
                       <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center group-hover:border-slate-500 group-hover:bg-slate-800 transition-all duration-500 z-10">
@@ -250,7 +364,7 @@ export default function Home() {
       </section>
 
       {/* Professional Features Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-slate-800 to-gray-800">
+      <section className="py-20 px-4 bg-gradient-to-br from-slate-800 to-gray-800 border-t border-slate-800">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-slate-100 mb-4">검증된 전문가와 함께 합니다</h2>
@@ -487,22 +601,18 @@ export default function Home() {
                   </div>
 
                   <div className="mt-8 pt-8 border-t border-slate-700">
-                    {/* 상단 영역 -신청 방법 안내 */}
                     <div className="mb-6">
                       <p className="text-slate-400 leading-relaxed">
                         학교, 정신건강복지센터, 청소년상담복지센터, 병의원 의뢰서 등을 통해 신청하거나 
                         직접 센터로 문의하시면 자세한 안내를 받으실 수 있습니다.
                       </p>
                     </div>
-                    {/* 하단 영역 - 2개 섹션 */}
                     <div className="grid md:grid-cols-2 gap-6">
-                      {/* 좌측 - 서비스 유형 안내 */}
                       <div>
                         <p className="text-slate-300 font-semibold border border-slate-600 bg-slate-700/50 p-4 rounded-xl">
                           본 센터는 1급, 2급 유형의 서비스를 제공함
                         </p>
                       </div>
-                      {/* 우측 - 카카오톡 전용 문의 */}
                       <div className="flex flex-col items-center justify-center space-y-3">
                         <a 
                           href="https://pf.kakao.com/_NxbxnRn" 
@@ -522,10 +632,10 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-              </div>{/* col */}
-            </div>{/* grid */}
-          </div>{/* card */}
-        </div>{/* container */}
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {SHOW_MIND_SERVICE && (
@@ -616,10 +726,10 @@ export default function Home() {
                         </div>
                       </div>
                     </div>
-                  </div>{/* col */}
-                </div>{/* grid */}
-              </div>{/* card */}
-            </div>{/* container */}
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
         </>
       )}
@@ -715,13 +825,13 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>{/* step2 */}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-4">
+      <section id="contact" className="py-20 px-4">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-slate-100 mb-8">상담 예약</h2>
 
