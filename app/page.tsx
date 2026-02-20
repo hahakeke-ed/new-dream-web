@@ -28,7 +28,7 @@ export default function Home() {
     {
       id: 'private-insight',
       name: 'Private Insight',
-      href: '#private-insight', 
+      href: 'private-insight', 
       description: '나를 깊이 있게 들여다보는 프리미엄 심리 분석 서비스입니다.'
     },
     {
