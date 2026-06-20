@@ -1,93 +1,123 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { navItems, site } from "../app/data/site";
-import SmsButton from "./SmsButton";
+import { navItems } from "../app/data/site";
 
 export default function SiteHeader() {
-  const pathname = usePathname();
+  const [activeTooltip, setActiveTooltip] = useState<string | null>(null);
   const [open, setOpen] = useState(false);
 
+  const handleMenuClick = (menuId: string, href: string) => {
+    if (menuId === "home") {
+      window.location.href = "/";
+      return;
+    }
+
+    if (activeTooltip === menuId) {
+      setActiveTooltip(null);
+      return;
+    }
+
+    setActiveTooltip(menuId);
+
+    if (href.startsWith("/#")) {
+      const target = document.querySelector(href.replace("/", ""));
+      target?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6">
-        <Link href="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
-          <img src="/new_logo (2).png" alt="드림심리상담센터" className="h-11 w-auto object-contain" />
-          <div className="hidden min-w-0 flex-col sm:flex">
-            <span className="text-base font-bold tracking-normal text-[#14314a]">{site.name}</span>
-            <span className="text-xs font-medium text-[#6b7c83]">{site.tagline}</span>
-          </div>
-        </Link>
+    <header className="sticky top-0 z-50 border-b border-slate-700 bg-slate-900 shadow-lg">
+      <div className="mx-auto max-w-7xl px-4 py-4 md:px-6">
+        <div className="flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-4" onClick={() => setOpen(false)}>
+            <img src="/new_logo (2).png" alt="드림심리상담센터 로고" className="h-12 w-auto object-contain" />
+            <div className="hidden flex-col sm:flex">
+              <h1 className="text-2xl font-bold leading-tight text-amber-400">드림심리상담센터</h1>
+              <p className="text-sm font-medium text-slate-400">전문심리상담기관</p>
+            </div>
+          </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
-          {navItems.map((item) => {
-            const active = pathname === item.href || (item.href === "/board" && pathname.startsWith("/board"));
-            return (
+          <nav className="relative hidden items-center gap-8 md:flex">
+            {navItems.map((item) => (
+              <div key={item.id} className="relative">
+                <button
+                  type="button"
+                  onClick={() => handleMenuClick(item.id, item.href)}
+                  className={`cursor-pointer whitespace-nowrap transition-colors hover:text-amber-400 ${
+                    item.id === "home" ? "font-medium text-slate-100" : "text-slate-300"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              </div>
+            ))}
+
+            <div className="relative">
               <Link
-                key={item.href}
-                href={item.href}
-                className={`text-sm font-semibold transition ${
-                  active ? "text-[#1f6f8b]" : "text-slate-700 hover:text-[#1f6f8b]"
-                }`}
+                href="/board"
+                className="flex cursor-pointer items-center whitespace-nowrap font-medium text-slate-300 transition-colors hover:text-amber-400"
               >
-                {item.label}
+                소식 및 칼럼
               </Link>
-            );
-          })}
-        </nav>
+            </div>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <a
-            href={`tel:${site.phone}`}
-            className="inline-flex h-10 items-center justify-center rounded-lg border border-[#cddde2] px-4 text-sm font-bold text-[#14314a] transition hover:border-[#1f6f8b] hover:text-[#1f6f8b]"
+            {activeTooltip && (
+              <div className="absolute left-0 right-0 top-full z-50 mt-3">
+                <div className="w-full rounded-2xl border border-slate-500/50 bg-slate-600/80 p-6 text-white shadow-2xl backdrop-blur-sm">
+                  <p className="text-sm leading-relaxed">
+                    {navItems.find((item) => item.id === activeTooltip)?.description}
+                  </p>
+                </div>
+              </div>
+            )}
+          </nav>
+
+          <button
+            type="button"
+            aria-label="메뉴 열기"
+            aria-expanded={open}
+            onClick={() => setOpen((value) => !value)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-600 text-slate-100 md:hidden"
           >
-            전화 예약
-          </a>
-          <SmsButton className="h-10 px-4 py-0 text-sm">문자 예약</SmsButton>
+            <span className="relative block h-4 w-5">
+              <span className={`absolute left-0 top-0 h-0.5 w-5 bg-current transition ${open ? "translate-y-2 rotate-45" : ""}`} />
+              <span className={`absolute left-0 top-2 h-0.5 w-5 bg-current transition ${open ? "opacity-0" : ""}`} />
+              <span className={`absolute left-0 top-4 h-0.5 w-5 bg-current transition ${open ? "-translate-y-2 -rotate-45" : ""}`} />
+            </span>
+          </button>
         </div>
 
-        <button
-          type="button"
-          aria-label="메뉴 열기"
-          aria-expanded={open}
-          onClick={() => setOpen((value) => !value)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-slate-200 text-[#14314a] md:hidden"
-        >
-          <span className="relative block h-4 w-5">
-            <span className={`absolute left-0 top-0 h-0.5 w-5 bg-current transition ${open ? "translate-y-2 rotate-45" : ""}`} />
-            <span className={`absolute left-0 top-2 h-0.5 w-5 bg-current transition ${open ? "opacity-0" : ""}`} />
-            <span className={`absolute left-0 top-4 h-0.5 w-5 bg-current transition ${open ? "-translate-y-2 -rotate-45" : ""}`} />
-          </span>
-        </button>
+        {open && (
+          <div className="mt-4 border-t border-slate-700 pt-4 md:hidden">
+            <nav className="grid gap-2">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => {
+                    setOpen(false);
+                    handleMenuClick(item.id, item.href);
+                  }}
+                  className="rounded-lg px-3 py-3 text-left text-sm font-bold text-slate-300 hover:bg-slate-800 hover:text-amber-400"
+                >
+                  {item.label}
+                </button>
+              ))}
+              <Link
+                href="/board"
+                onClick={() => setOpen(false)}
+                className="rounded-lg px-3 py-3 text-sm font-bold text-slate-300 hover:bg-slate-800 hover:text-amber-400"
+              >
+                소식 및 칼럼
+              </Link>
+            </nav>
+          </div>
+        )}
       </div>
 
-      {open && (
-        <div className="border-t border-slate-200 bg-white px-4 py-4 md:hidden">
-          <nav className="grid gap-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-bold text-slate-700 hover:bg-[#edf6f4] hover:text-[#1f6f8b]"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-          <div className="mt-4 grid grid-cols-2 gap-2">
-            <a
-              href={`tel:${site.phone}`}
-              className="inline-flex h-11 items-center justify-center rounded-lg border border-[#cddde2] text-sm font-bold text-[#14314a]"
-            >
-              전화 예약
-            </a>
-            <SmsButton className="h-11 px-3 py-0 text-sm">문자 예약</SmsButton>
-          </div>
-        </div>
-      )}
+      {activeTooltip && <div className="fixed inset-0 z-40" onClick={() => setActiveTooltip(null)} />}
     </header>
   );
 }
