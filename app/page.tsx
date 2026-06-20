@@ -1,108 +1,154 @@
 import Link from "next/link";
-import SectionHeading from "../components/SectionHeading";
 import SmsButton from "../components/SmsButton";
-import { credentials, processSteps, promises, services, site } from "./data/site";
+import { services, site } from "./data/site";
 import { getBoardPosts } from "./lib/googleBoard";
 
 const accentClass: Record<string, string> = {
-  blue: "border-[#c8e2ed] bg-[#f2f8fb]",
-  rose: "border-[#ead3cf] bg-[#fff6f3]",
-  green: "border-[#cfe4d7] bg-[#f2faf5]",
-  amber: "border-[#eadfbe] bg-[#fffaf0]",
+  blue: "hover:border-amber-500",
+  rose: "hover:border-rose-500",
+  green: "hover:border-emerald-500",
+  amber: "hover:border-purple-500",
 };
 
 export default async function Home() {
   const posts = (await getBoardPosts()).slice(0, 3);
 
   return (
-    <>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900">
       <section
-        className="relative flex min-h-[76vh] items-center overflow-hidden bg-white px-4 py-20 md:px-6"
+        className="relative flex min-h-screen items-center px-4 py-32 text-white"
         style={{
-          backgroundImage: `linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.88) 45%, rgba(255,255,255,0.42) 100%), url('${site.heroImage}')`,
+          backgroundImage: `linear-gradient(rgba(30, 41, 59, 0.7), rgba(30, 41, 59, 0.7)), url('${site.heroImage}')`,
           backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
       >
-        <div className="mx-auto grid w-full max-w-7xl gap-10 md:grid-cols-[1fr_0.72fr] md:items-end">
-          <div className="max-w-3xl">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#1f6f8b]">Private Counseling Center</p>
-            <h1 className="mt-5 text-4xl font-extrabold leading-tight tracking-normal text-[#14314a] md:text-6xl">
-              조용하고 안전한 공간에서
-              <br />
-              마음을 살피는 전문상담
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700 md:text-xl">
-              드림심리상담센터는 예약제로 운영되는 전문심리상담기관입니다. 비밀보장 원칙과
-              독립된 상담 공간을 바탕으로 개인, 부부, 가족, 아동·청소년 상담을 진행합니다.
+        <div className="relative mx-auto max-w-4xl text-center">
+          <h1 className="mb-6 text-5xl font-bold">마음을 치유하는 전문기관</h1>
+          <p className="mb-8 text-xl text-slate-200">
+            전문적이고 따뜻한 심리상담으로
+            <br />
+            당신의 마음을 보살펴 드립니다
+          </p>
+        </div>
+      </section>
+
+      <section id="expertise" className="bg-gradient-to-br from-slate-800 to-gray-800 px-4 py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-4xl font-bold text-slate-100">검증된 전문가와 함께 합니다</h2>
+            <p className="text-lg text-slate-400">
+              한국심리학회 상담심리사 자격을 보유한 상담자의 상담이 진행됩니다.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <SmsButton className="h-12">문자 예약 문의</SmsButton>
-              <a
-                href={site.kakaoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex h-12 items-center justify-center rounded-lg border border-[#cddde2] bg-white px-6 font-bold text-[#14314a] shadow-sm transition hover:border-[#1f6f8b] hover:text-[#1f6f8b]"
-              >
-                카카오채널 문의
-              </a>
-            </div>
           </div>
 
-          <div className="rounded-lg border border-white/70 bg-white/80 p-6 shadow-sm backdrop-blur-md">
-            <p className="text-sm font-bold text-[#1f6f8b]">상담 예약</p>
-            <dl className="mt-5 grid gap-4 text-sm">
-              <div className="flex items-start justify-between gap-4 border-b border-slate-200 pb-4">
-                <dt className="font-bold text-[#14314a]">전화</dt>
-                <dd className="text-right text-slate-700">{site.phone}</dd>
+          <div className="mb-16 grid gap-8 md:grid-cols-3">
+            <div className="rounded-2xl border border-slate-600 bg-slate-700/50 p-8">
+              <div className="mb-6 flex items-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-amber-600 text-xl text-white">
+                  ♙
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-xl font-bold text-slate-100">심리상담 전문가 자격</h3>
+                  <p className="text-slate-400">Korean Psychology Association</p>
+                </div>
               </div>
-              <div className="flex items-start justify-between gap-4 border-b border-slate-200 pb-4">
-                <dt className="font-bold text-[#14314a]">위치</dt>
-                <dd className="text-right text-slate-700">범어역 11번 출구 인근</dd>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="h-2 w-2 rounded-full bg-amber-400" />
+                  <span className="text-slate-300">한국심리학회 상담심리사 1급, 2급</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="h-2 w-2 rounded-full bg-amber-400" />
+                  <span className="text-slate-300">국가 청소년 상담사 1급</span>
+                </div>
               </div>
-              <div className="flex items-start justify-between gap-4">
-                <dt className="font-bold text-[#14314a]">운영</dt>
-                <dd className="text-right text-slate-700">사전 예약제</dd>
+            </div>
+
+            <div className="rounded-2xl border border-slate-600 bg-slate-700/50 p-8">
+              <div className="mb-6 flex items-center">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-600 text-xl text-white">
+                  ✓
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-xl font-bold text-slate-100">특징 및 장점</h3>
+                  <p className="text-slate-400">Professional Counseling Features</p>
+                </div>
               </div>
-            </dl>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="h-2 w-2 rounded-full bg-emerald-400" />
+                  <span className="text-slate-300">개인별 맞춤형 상담 프로그램</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="h-2 w-2 rounded-full bg-emerald-400" />
+                  <span className="text-slate-300">철저한 개인정보 보호</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="h-2 w-2 rounded-full bg-emerald-400" />
+                  <span className="text-slate-300">편안하고 안전한 상담 환경</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-blue-500/30 bg-gradient-to-br from-blue-600/20 to-indigo-600/20 p-8">
+              <div className="mb-6 text-center">
+                <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-600 text-2xl text-white">
+                  ▣
+                </div>
+                <h3 className="mb-2 text-xl font-bold text-slate-100">한국심리학회의 검증된 전문가</h3>
+                <p className="text-sm text-slate-400">Professional Association Membership</p>
+              </div>
+              <div className="mb-6 text-center">
+                <p className="text-sm leading-6 text-slate-300">
+                  한국심리학회는 가장 엄격한 자격검증 기준(학위, 임상 수련등)으로 전문성을 확보하고 널리
+                  공인받고 있습니다.
+                  <br />
+                  (하단: 지역별 상담심리사 검색 서비스 제공중)
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <a
+                  href="https://krcpa.or.kr/user/new/index.asp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-full cursor-pointer items-center justify-center whitespace-nowrap rounded-xl bg-blue-600 py-3 text-sm font-bold text-white transition-colors hover:bg-blue-500"
+                >
+                  한국상담심리학회
+                </a>
+                <div className="rounded-xl border border-slate-600 bg-slate-700/50 p-4 text-center text-sm font-bold leading-6 text-slate-300">
+                  상담전문가를 양성하는 수퍼비전 기관
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-slate-200 bg-white px-4 py-8 md:px-6">
-        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
-          {promises.map((item) => (
-            <div key={item.title} className="rounded-lg border border-slate-200 bg-[#fbfdfc] p-5">
-              <h2 className="font-bold text-[#14314a]">{item.title}</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-600">{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <section id="services" className="px-4 py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-4xl font-bold text-slate-100">상담 서비스</h2>
+            <p className="text-lg text-slate-400">개인적 필요에 맞는 전문적인 심리상담을 제공합니다</p>
+          </div>
 
-      <section id="services" className="px-4 py-16 md:px-6 md:py-20">
-        <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Counseling Services"
-            title="상담 서비스"
-            description="하위 페이지는 유지하면서 전체 톤을 밝고 차분하게 정리했습니다."
-          />
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {services.map((service) => (
               <Link
                 key={service.slug}
                 href={`/${service.slug}`}
-                className={`rounded-lg border p-6 transition hover:-translate-y-1 hover:shadow-lg ${accentClass[service.accent]}`}
+                className={`group cursor-pointer rounded-2xl border border-slate-600 bg-slate-800 p-8 transition-all ${accentClass[service.accent]}`}
               >
-                <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#1f6f8b]">{service.eyebrow}</p>
-                <h3 className="mt-3 text-2xl font-bold text-[#14314a]">{service.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-slate-700">{service.summary}</p>
-                <ul className="mt-5 space-y-2">
+                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-amber-600 text-2xl text-white transition-colors group-hover:bg-amber-500">
+                  ●
+                </div>
+                <h3 className="mb-4 text-xl font-bold text-slate-100">{service.title}</h3>
+                <p className="mb-4 text-slate-400">{service.summary}</p>
+                <ul className="space-y-2 text-sm text-slate-500">
                   {service.points.map((point) => (
-                    <li key={point} className="flex gap-2 text-sm text-slate-700">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1f6f8b]" />
-                      <span>{point}</span>
-                    </li>
+                    <li key={point}>• {point}</li>
                   ))}
                 </ul>
               </Link>
@@ -111,76 +157,155 @@ export default async function Home() {
         </div>
       </section>
 
-      <section id="expertise" className="bg-white px-4 py-16 md:px-6 md:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[0.86fr_1fr] md:items-center">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#1f6f8b]">Professional Standard</p>
-            <h2 className="mt-4 text-3xl font-bold tracking-normal text-[#14314a] md:text-4xl">
-              전문성과 프라이버시를 함께 지키는 상담
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-slate-700">
-              내부 공간 사진을 크게 노출하지 않아도, 내담자가 기대하는 것은 더 명확히 전달할 수 있습니다.
-              자격, 예약제, 독립 공간, 비밀보장 원칙을 사이트의 중심 메시지로 배치했습니다.
-            </p>
+      <section id="voucher" className="bg-gradient-to-br from-blue-900/20 to-indigo-900/30 px-4 py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-4xl font-bold text-slate-100">정신건강심리상담바우처</h2>
+            <p className="text-lg text-slate-400">-정부 지원 사업으로 부담없이 전문 심리상담을 받을 수 있습니다</p>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {credentials.map((credential) => (
-              <div key={credential} className="rounded-lg border border-slate-200 bg-[#f7faf8] p-5">
-                <p className="text-sm font-bold leading-6 text-[#14314a]">{credential}</p>
+
+          <div className="rounded-3xl border border-slate-600 bg-slate-800/50 p-8 backdrop-blur-sm md:p-12">
+            <div className="grid items-center gap-12 md:grid-cols-2">
+              <div>
+                <img
+                  src="/voucher.png"
+                  alt="정신건강심리상담바우처 안내 포스터"
+                  className="h-auto w-full rounded-2xl border border-slate-700 object-cover object-top shadow-2xl"
+                />
               </div>
-            ))}
+              <div className="space-y-8">
+                <div>
+                  <h3 className="mb-6 text-3xl font-bold text-slate-100">정부 지원 심리상담 서비스</h3>
+                  <p className="mb-8 text-lg leading-relaxed text-slate-300">
+                    드림심리상담센터는 <span className="font-semibold text-blue-400">정신건강심리상담바우처 수행기관</span>으로
+                    우울, 불안 등 정서적 어려움을 겪는 국민들에게 전문적인 심리상담 서비스를 제공합니다.
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm text-white">
+                      1
+                    </div>
+                    <div>
+                      <h4 className="mb-2 text-xl font-semibold text-slate-200">정부 지원 프로그램</h4>
+                      <p className="text-slate-400">보건복지부에서 시행</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-sm text-white">
+                      2
+                    </div>
+                    <div>
+                      <h4 className="mb-2 text-xl font-semibold text-slate-200">전문가 자격 보장</h4>
+                      <p className="text-slate-400">
+                        국가 자격 및 한국심리학회, 한국상담심리학회 자격을 보유한 심리사만이 상담서비스 제공
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-600 text-sm text-white">
+                      3
+                    </div>
+                    <div>
+                      <h4 className="mb-2 text-xl font-semibold text-slate-200">경제적 부담 완화</h4>
+                      <p className="text-slate-400">정부 지원을 통해 합리적인 비용으로 전문적인 상담 이용 가능</p>
+                    </div>
+                  </div>
+
+                  <div className="border-t border-slate-700 pt-8">
+                    <p className="mb-6 leading-relaxed text-slate-400">
+                      학교, 정신건강복지센터, 청소년상담복지센터, 병의원 의뢰서 등을 통해 신청하거나 직접 센터로 문의하시면 자세한 안내를 받을 수 있습니다.
+                    </p>
+                    <a
+                      href={site.kakaoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex h-12 items-center justify-center rounded-xl bg-yellow-400 px-6 text-sm font-bold text-black transition hover:bg-yellow-300"
+                    >
+                      정신건강심리상담바우처 전용 문의
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="voucher" className="px-4 py-16 md:px-6 md:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 rounded-lg border border-[#d4e6ee] bg-[#f2f8fb] p-6 md:grid-cols-[0.92fr_1fr] md:p-10">
-          <div>
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#1f6f8b]">Voucher Program</p>
-            <h2 className="mt-4 text-3xl font-bold tracking-normal text-[#14314a]">정신건강심리상담바우처</h2>
-            <p className="mt-5 text-base leading-8 text-slate-700">
-              드림심리상담센터는 정신건강심리상담바우처 서비스 제공기관입니다. 우울, 불안,
-              정서적 어려움을 겪는 분들이 전문 상담을 이용할 수 있도록 안내합니다.
-            </p>
-            <p className="mt-4 rounded-lg border border-[#bdd8e1] bg-white p-4 text-sm font-bold leading-6 text-[#14314a]">
-              동 행정복지센터, 정신건강복지센터, 청소년상담복지센터, 병의원 등을 통해 신청할 수 있습니다.
-            </p>
-          </div>
-          <div className="rounded-lg border border-white bg-white p-4 shadow-sm">
-            <img src="/voucher.png" alt="정신건강심리상담바우처 안내" className="h-full w-full rounded-lg object-cover" />
-          </div>
-        </div>
-      </section>
-
-      <section id="process" className="bg-white px-4 py-16 md:px-6 md:py-20">
+      <section id="process" className="bg-gradient-to-br from-gray-900 to-slate-900 px-4 py-20">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="Process"
-            title="이용 절차"
-            description="상담은 빠른 접수보다 충분한 확인과 안전한 관계 설정을 우선합니다."
-          />
-          <div className="grid gap-5 md:grid-cols-4">
-            {processSteps.map((step, index) => (
-              <div key={step.title} className="rounded-lg border border-slate-200 bg-[#fbfdfc] p-6">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-[#1f6f8b] text-sm font-bold text-white">
-                  {index + 1}
-                </span>
-                <h3 className="mt-5 text-xl font-bold text-[#14314a]">{step.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-600">{step.text}</p>
+          <div className="mb-16 text-center">
+            <h2 className="text-4xl font-bold text-slate-100">서비스 이용절차</h2>
+            <p className="text-lg text-slate-400">1:1 예약서비스로 체계적이고 전문적인 상담을 제공합니다</p>
+          </div>
+
+          <div className="grid gap-12 md:grid-cols-2">
+            <div className="rounded-2xl border border-slate-700 bg-gradient-to-br from-slate-800 to-gray-800 p-8">
+              <div className="flex items-center gap-6">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-amber-600">
+                  <span className="text-2xl font-bold text-white">1</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="mb-4 text-2xl font-bold text-slate-100">서비스 신청</h3>
+                  <p className="mb-6 text-slate-300">
+                    현재 1:1 예약서비스이므로 반드시 문자 예약을 통해 신청해 주세요.
+                  </p>
+                  <div className="space-y-4">
+                    <SmsButton className="h-12">문자 예약</SmsButton>
+                    <p className="text-xs text-slate-500">
+                      PC에서는 번호와 내용을 복사합니다. 휴대폰에 전송해 주세요.
+                    </p>
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
+
+            <div className="rounded-2xl border border-slate-700 bg-gradient-to-br from-slate-800 to-gray-800 p-8">
+              <div className="flex items-center gap-6">
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-emerald-600">
+                  <span className="text-2xl font-bold text-white">2</span>
+                </div>
+                <div className="flex-1">
+                  <h3 className="mb-4 text-2xl font-bold text-slate-100">서비스 이용</h3>
+                  <p className="mb-6 text-slate-300">상담 유형에 따라 소요시간이 다릅니다</p>
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-3">
+                      <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-sm text-white">
+                        •
+                      </div>
+                      <div>
+                        <span className="font-medium text-slate-300">개인상담</span>
+                        <p className="text-sm text-slate-400">50분 기준</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-sm text-white">
+                        •
+                      </div>
+                      <div>
+                        <span className="font-medium text-slate-300">부부상담, 가족상담</span>
+                        <p className="text-sm text-slate-400">90분 기준</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-16 md:px-6 md:py-20">
+      <section className="px-4 py-20">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#1f6f8b]">Notice & Column</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-normal text-[#14314a]">소식 및 칼럼</h2>
+              <h2 className="text-3xl font-bold text-slate-100">소식 및 칼럼</h2>
+              <p className="mt-3 text-slate-400">간단한 공지와 칼럼을 확인할 수 있습니다</p>
             </div>
-            <Link href="/board" className="text-sm font-bold text-[#1f6f8b] hover:text-[#14314a]">
+            <Link href="/board" className="text-sm font-bold text-amber-400 hover:text-amber-300">
               전체 보기
             </Link>
           </div>
@@ -188,54 +313,49 @@ export default async function Home() {
           {posts.length > 0 ? (
             <div className="grid gap-5 md:grid-cols-3">
               {posts.map((post) => (
-                <Link key={post.id} href={`/board/${post.id}`} className="rounded-lg border border-slate-200 bg-white p-6 transition hover:shadow-lg">
-                  <p className="text-sm font-bold text-[#1f6f8b]">{post.category || "소식"}</p>
-                  <h3 className="mt-3 text-xl font-bold leading-7 text-[#14314a]">{post.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-600">{post.summary}</p>
+                <Link
+                  key={post.id}
+                  href={`/board/${post.id}`}
+                  className="rounded-2xl border border-slate-600 bg-slate-800 p-6 transition hover:border-amber-500"
+                >
+                  <p className="text-sm font-bold text-amber-400">{post.category || "소식"}</p>
+                  <h3 className="mt-3 text-xl font-bold leading-7 text-slate-100">{post.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-400">{post.summary}</p>
                   <p className="mt-5 text-xs text-slate-500">{post.date}</p>
                 </Link>
               ))}
             </div>
           ) : (
-            <div className="rounded-lg border border-dashed border-slate-300 bg-white p-8 text-center text-slate-600">
+            <div className="rounded-2xl border border-dashed border-slate-600 bg-slate-800 p-8 text-center text-slate-400">
               게시판은 Google Sheets 연결 후 표시됩니다.
             </div>
           )}
         </div>
       </section>
 
-      <section id="contact" className="bg-[#102435] px-4 py-16 text-white md:px-6 md:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1fr_0.8fr] md:items-center">
+      <section id="contact" className="bg-[#102435] px-4 py-16 text-white md:py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 md:grid-cols-[1fr_0.9fr] md:items-center">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#8cc3d1]">Contact</p>
-            <h2 className="mt-4 text-3xl font-bold tracking-normal md:text-4xl">상담 예약 및 오시는 길</h2>
-            <p className="mt-5 text-base leading-8 text-slate-300">{site.address}</p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={`tel:${site.phone}`}
-                className="inline-flex h-12 items-center justify-center rounded-lg bg-white px-6 font-bold text-[#102435] transition hover:bg-[#e9f5f6]"
-              >
-                전화 예약 {site.phone}
-              </a>
+            <h2 className="mt-4 text-4xl font-bold tracking-normal">상담 예약 및 오시는 길</h2>
+            <p className="mt-6 text-xl leading-8 text-slate-300">{site.address}</p>
+            <div className="mt-8">
               <a
                 href={site.naverMapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-12 items-center justify-center rounded-lg border border-white/30 px-6 font-bold text-white transition hover:border-white"
+                className="inline-flex h-14 items-center justify-center rounded-lg border border-white/30 px-8 text-lg font-bold text-white transition hover:border-white"
               >
                 네이버 지도 보기
               </a>
             </div>
           </div>
-          <div className="rounded-lg border border-white/10 bg-white/10 p-6">
-            <h3 className="text-xl font-bold">프라이빗 상담 공간</h3>
-            <p className="mt-4 text-sm leading-7 text-slate-300">
-              센터 내부 이미지는 크게 노출하지 않고, 방문자가 안심할 수 있는 운영 원칙을 중심으로 안내합니다.
-              상담실, 대기 공간, 놀이 공간은 사전 예약된 방문자에게 조용히 제공됩니다.
-            </p>
+          <div className="rounded-lg border border-white/10 bg-white p-5">
+            <h3 className="mb-4 text-xl font-bold text-[#102435]">프라이빗 상담 공간</h3>
+            <img src="/map.png" alt="드림심리상담센터 약도" className="w-full rounded-md" />
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }
