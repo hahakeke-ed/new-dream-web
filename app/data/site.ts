@@ -4,7 +4,7 @@ export const site = {
   phone: "053-759-1282",
   smsPhone: "01084969389",
   kakaoUrl: "https://pf.kakao.com/_NxbxnRn",
-  address: "대구광역시 수성구 동대구로 346, 범어역 2호선 11번 출구 인근",
+  address: "대구광역시 수성구 동대구로346 범어서한포레스트 오피스텔, 범어역 (2호선) 11번 출구",
   naverMapUrl:
     "https://map.naver.com/v5/search/%EB%93%9C%EB%A6%BC%EC%8B%AC%EB%A6%AC%EC%83%81%EB%8B%B4%EC%84%BC%ED%84%B0",
   heroImage:
@@ -12,12 +12,30 @@ export const site = {
 };
 
 export const navItems = [
-  { label: "상담 서비스", href: "/#services" },
-  { label: "전문성", href: "/#expertise" },
-  { label: "바우처", href: "/#voucher" },
-  { label: "이용 절차", href: "/#process" },
-  { label: "소식", href: "/board" },
-  { label: "오시는 길", href: "/#contact" },
+  {
+    id: "home",
+    label: "홈",
+    href: "/",
+    description: "드림심리상담센터 메인 페이지입니다. 전체적인 서비스 소개와 상담 프로그램을 확인할 수 있습니다.",
+  },
+  {
+    id: "counseling",
+    label: "심리상담",
+    href: "/#services",
+    description: "심리상담전문가(한국심리학회 상담심리사1급)와 1:1 심리상담을 통해 심리적 적응과 성장을 돕습니다.",
+  },
+  {
+    id: "national-support",
+    label: "정신건강심리상담바우처",
+    href: "/#voucher",
+    description: "우울, 불안 등 정서적 어려움을 겪는 국민들에게 전문적인 심리상담 서비스를 제공하는 정부 사업입니다. 학교나 정신건강복지센터, 청소년상담복지센터, 병의원 의뢰서 등을 통해신청할 수 있습니다.",
+  },
+  {
+    id: "eap",
+    label: "EAP 기업심리상담",
+    href: "/#expertise",
+    description: "본 기관과 연계된 기업체 임직원 및 가족에 대한 심리상담 서비스를 제공합니다.",
+  },
 ];
 
 export const services = [
@@ -25,44 +43,39 @@ export const services = [
     slug: "individual",
     title: "개인상담",
     eyebrow: "Individual Counseling",
-    summary:
-      "우울, 불안, 스트레스, 대인관계, 자기이해의 어려움을 차분히 다루는 1:1 상담입니다.",
-    points: ["정서적 어려움", "대인관계", "자기이해와 성장", "생활 스트레스"],
+    summary: "개인적인 고민과 심리적 어려움을 전문적으로 상담합니다",
+    points: ["우울, 불안 상담", "스트레스 관리", "자존감 향상", "대인관계 개선"],
     accent: "blue",
   },
   {
     slug: "couple",
     title: "부부상담",
     eyebrow: "Couple Counseling",
-    summary:
-      "반복되는 갈등과 소통의 어려움을 안전한 대화 구조 안에서 함께 살펴봅니다.",
-    points: ["의사소통", "갈등 조정", "친밀감 회복", "신뢰 재구축"],
+    summary: "더 건강하고 행복한 부부 관계를 위한 전문 상담입니다",
+    points: ["의사소통 개선", "갈등 해결", "친밀감 회복", "신뢰 구축"],
     accent: "rose",
   },
   {
     slug: "family",
     title: "가족상담",
     eyebrow: "Family Counseling",
-    summary:
-      "가족 안의 역할, 경계, 세대 차이, 양육 갈등을 관계의 맥락에서 이해합니다.",
-    points: ["가족 갈등", "부모-자녀 관계", "역할과 경계", "양육 협력"],
+    summary: "화목한 가정을 위한 가족 구성원 간의 관계 개선 상담",
+    points: ["가족 갈등", "의사소통 문제", "자녀 양육 상담", "가족 유대감 강화"],
     accent: "green",
   },
   {
     slug: "child",
     title: "아동·청소년상담",
     eyebrow: "Child & Adolescent",
-    summary:
-      "발달 단계에 맞춘 상담과 부모 상담을 함께 진행하며 아이의 마음을 이해합니다.",
-    points: ["학교 적응", "정서 조절", "또래 관계", "부모 상담"],
+    summary: "성장기 아이들의 건강한 발달을 위한 전문상담",
+    points: ["놀이치료", "학습 문제", "행동 수정", "정서 발달"],
     accent: "amber",
   },
 ];
 
 export const credentials = [
   "한국심리학회 상담심리사 1급·2급",
-  "한국임상심리학회 임상심리전문가",
-  "보건복지부 정신건강임상심리사 1급",
+  "국가 청소년 상담사 1급",
   "정신건강심리상담바우처 서비스 제공기관",
 ];
 
@@ -84,7 +97,7 @@ export const promises = [
 export const processSteps = [
   {
     title: "문의 및 예약",
-    text: "전화, 문자, 카카오채널로 상담 가능 시간과 상담 유형을 확인합니다.",
+    text: "문자 예약으로 상담 가능 시간과 상담 유형을 확인합니다.",
   },
   {
     title: "초기 면담",
