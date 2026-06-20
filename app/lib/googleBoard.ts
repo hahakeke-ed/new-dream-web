@@ -99,11 +99,28 @@ function slugify(text: string) {
     .slice(0, 80);
 }
 
-export function toGoogleDocEmbedUrl(url: string) {
-  if (!url) return "";
-  if (url.includes("embedded=true")) return url;
+function cleanUrl(value: string) {
+  const trimmed = value.trim();
+  const markdownMatch = trimmed.match(/\((https:\/\/[^)]+)\)/);
+  if (markdownMatch?.[1]) return markdownMatch[1];
 
-  const docMatch = url.match(/docs\.google\.com\/document\/d\/([^/]+)/);
+  const plainUrlMatch = trimmed.match(/https:\/\/\S+/);
+  if (plainUrlMatch?.[0]) return plainUrlMatch[0].replace(/[)\]]$/, "");
+
+  return trimmed;
+}
+
+export function toGoogleDocEmbedUrl(url: string) {
+  const cleanedUrl = cleanUrl(url);
+  if (!cleanedUrl) return "";
+  if (cleanedUrl.includes("embedded=true")) return cleanedUrl;
+
+  const publishedDocMatch = cleanedUrl.match(/docs\.google\.com\/document\/d\/e\/([^/]+)\/pub/);
+  if (publishedDocMatch?.[1]) {
+    return `https://docs.google.com/document/d/e/${publishedDocMatch[1]}/pub?embedded=true`;
+  }
+
+  const docMatch = cleanedUrl.match(/docs\.google\.com\/document\/d\/([^/]+)/);
   if (docMatch?.[1]) {
     return `https://docs.google.com/document/d/${docMatch[1]}/pub?embedded=true`;
   }
@@ -136,7 +153,7 @@ export async function getBoardPosts(): Promise<BoardPost[]> {
       .map((row, index) => {
         const title = getValue(row, HEADER_ALIASES.title) || "제목 없음";
         const date = getValue(row, HEADER_ALIASES.date);
-        const rawDocUrl = getValue(row, HEADER_ALIASES.docUrl);
+        const rawDocUrl = cleanUrl(getValue(row, HEADER_ALIASES.docUrl));
         const embedUrl = getValue(row, HEADER_ALIASES.embedUrl) || toGoogleDocEmbedUrl(rawDocUrl);
         const id = getValue(row, HEADER_ALIASES.id) || slugify(`${date}-${title}`) || String(index + 1);
 
