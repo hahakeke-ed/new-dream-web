@@ -90,6 +90,11 @@ export default async function Home() {
                   <span className="text-slate-300">편안하고 안전한 상담 환경</span>
                 </div>
               </div>
+              <div className="mt-10 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4">
+                <p className="text-center text-base font-bold leading-7 text-emerald-200">
+                  상담사를 지도하는 ‘수퍼바이저’ 전문가
+                </p>
+              </div>
             </div>
 
             <div className="rounded-2xl border border-blue-500/30 bg-gradient-to-br from-blue-600/20 to-indigo-600/20 p-8">
@@ -118,8 +123,8 @@ export default async function Home() {
                 >
                   한국상담심리학회
                 </a>
-                <div className="rounded-xl border border-slate-600 bg-slate-700/50 p-4 text-center text-sm font-bold leading-6 text-slate-300">
-                  상담전문가를 양성하는 수퍼비전 기관
+                <div className="rounded-xl border border-blue-400/30 bg-blue-400/10 p-4 text-center text-sm font-bold leading-6 text-blue-100">
+                  한국상담심리학회 수련감독 기관
                 </div>
               </div>
             </div>
