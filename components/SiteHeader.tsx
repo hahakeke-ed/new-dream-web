@@ -28,25 +28,33 @@ export default function SiteHeader() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-700 bg-slate-900 shadow-lg">
-      <div className="mx-auto max-w-7xl px-4 py-4 md:px-6">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-4" onClick={() => setOpen(false)}>
-            <img src="/new_logo (2).png" alt="드림심리상담센터 로고" className="h-12 w-auto object-contain" />
-            <div className="hidden flex-col sm:flex">
-              <h1 className="text-2xl font-bold leading-tight text-amber-400">드림심리상담센터</h1>
-              <p className="text-sm font-medium text-slate-400">전문심리상담기관</p>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#111927]/95 shadow-lg backdrop-blur-md">
+      <div className="mx-auto max-w-7xl px-4 py-3 md:px-6">
+        <div className="flex items-center justify-between gap-6">
+          <Link href="/" className="flex min-w-0 items-center gap-4" onClick={() => setOpen(false)}>
+            <div className="flex h-11 w-16 shrink-0 items-center justify-center rounded-md border border-slate-600 bg-slate-950/70 shadow-sm">
+              <div className="text-center leading-none">
+                <div className="text-sm font-semibold tracking-[0.08em] text-slate-100">DREAM</div>
+                <div className="mt-1 text-[9px] font-medium tracking-normal text-slate-400">심리상담센터</div>
+              </div>
+            </div>
+
+            <div className="hidden min-w-0 flex-col sm:flex">
+              <h1 className="truncate text-xl font-semibold leading-tight tracking-normal text-slate-100">
+                드림심리상담센터
+              </h1>
+              <p className="mt-0.5 text-xs font-medium tracking-normal text-slate-400">전문심리상담기관</p>
             </div>
           </Link>
 
-          <nav className="relative hidden items-center gap-8 md:flex">
+          <nav className="relative hidden items-center gap-7 md:flex">
             {navItems.map((item) => (
               <div key={item.id} className="relative">
                 <button
                   type="button"
                   onClick={() => handleMenuClick(item.id, item.href)}
-                  className={`cursor-pointer whitespace-nowrap transition-colors hover:text-amber-400 ${
-                    item.id === "home" ? "font-medium text-slate-100" : "text-slate-300"
+                  className={`cursor-pointer whitespace-nowrap text-sm font-medium tracking-normal transition-colors hover:text-amber-300 ${
+                    item.id === "home" ? "text-slate-100" : "text-slate-300"
                   }`}
                 >
                   {item.label}
@@ -57,7 +65,7 @@ export default function SiteHeader() {
             <div className="relative">
               <Link
                 href="/board"
-                className="flex cursor-pointer items-center whitespace-nowrap font-medium text-slate-300 transition-colors hover:text-amber-400"
+                className="flex cursor-pointer items-center whitespace-nowrap text-sm font-medium tracking-normal text-slate-300 transition-colors hover:text-amber-300"
               >
                 소식 및 칼럼
               </Link>
@@ -65,8 +73,8 @@ export default function SiteHeader() {
 
             {activeTooltip && (
               <div className="absolute left-0 right-0 top-full z-50 mt-3">
-                <div className="w-full rounded-2xl border border-slate-500/50 bg-slate-600/80 p-6 text-white shadow-2xl backdrop-blur-sm">
-                  <p className="text-sm leading-relaxed">
+                <div className="w-full rounded-xl border border-slate-600/70 bg-slate-800/95 p-5 text-white shadow-2xl backdrop-blur-sm">
+                  <p className="text-sm leading-relaxed text-slate-200">
                     {navItems.find((item) => item.id === activeTooltip)?.description}
                   </p>
                 </div>
@@ -90,7 +98,7 @@ export default function SiteHeader() {
         </div>
 
         {open && (
-          <div className="mt-4 border-t border-slate-700 pt-4 md:hidden">
+          <div className="mt-4 border-t border-white/10 pt-4 md:hidden">
             <nav className="grid gap-2">
               {navItems.map((item) => (
                 <button
@@ -100,7 +108,7 @@ export default function SiteHeader() {
                     setOpen(false);
                     handleMenuClick(item.id, item.href);
                   }}
-                  className="rounded-lg px-3 py-3 text-left text-sm font-bold text-slate-300 hover:bg-slate-800 hover:text-amber-400"
+                  className="rounded-lg px-3 py-3 text-left text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-amber-300"
                 >
                   {item.label}
                 </button>
@@ -108,7 +116,7 @@ export default function SiteHeader() {
               <Link
                 href="/board"
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-bold text-slate-300 hover:bg-slate-800 hover:text-amber-400"
+                className="rounded-lg px-3 py-3 text-sm font-medium text-slate-300 hover:bg-slate-800 hover:text-amber-300"
               >
                 소식 및 칼럼
               </Link>
